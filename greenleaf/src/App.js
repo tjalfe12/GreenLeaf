@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     async function getPosts() {
       const url =
-        "http://localhost:3000/greenleaf/src/Backend/api.php?table=Tags";
+        "http://localhost:3000/greenleaf/src/Backend/api.php?getallposts";
       const response = await fetch(url);
       const data = await response.json();
       console.log(data["data"]);
