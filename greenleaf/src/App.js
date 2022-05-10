@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import Field from "./components/field";
 import { useEffect, useState } from "react";
 import About from "./pages/About.js";
 import Create from "./pages/Create.js";
