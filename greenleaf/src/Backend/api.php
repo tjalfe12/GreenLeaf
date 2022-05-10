@@ -8,11 +8,6 @@ include_once("MySQL.php");
 $request_method = $_SERVER['REQUEST_METHOD'];
 $mySQL = new MySQL(true);
 
-/* $mySQL->Insert("
-INSERT INTO Tags
-(tag_name)
-VALUES
-('Vegetarian');"); */
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['table'])) {
     $postId = $_GET['table'];
