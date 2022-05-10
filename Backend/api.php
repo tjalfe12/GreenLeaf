@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
     $sql = "SELECT * FROM `GetPosts`;";
     echo $mySQL->Query($sql, true);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getusers'])) {
-    $sql = "SELECT * FROM `GetPosts`;";
+    $sql = "SELECT * FROM `Users`;";
     echo $mySQL->Query($sql, true);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getpost'])) {
     $post = $_GET['getpost'];
