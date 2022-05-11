@@ -38,13 +38,28 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
 
 //------- API endpoints for the PUT method. Used to send data to server. --------------
 //"CALL UpdatePost()" and "CALL UpdateUser()" refers to stored procedures in the database.
-else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['postid'])) {
-    $id = $_GET['postid'];
+// To update a post, send the following object structure along in the body of the fetch request.
+
+// Example:
+/*  const postToUpdate = {
+        post_title : "PostExample",
+        post_description : "Some nice description of the product",
+        post_category : "Backery",
+        expiration_date : "yyyy-mm-dd",
+    }
+
+    const response = await fetch('http://www.sabox.dk/backend/api.php?updatepostid=2', 
+    {
+      method: "PUT",
+      body: JSON.stringify(postToUpdate),
+    });
+*/ else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['updatepostid'])) {
+    $id = $_GET['updatepostid'];
     $post = json_decode(file_get_contents('php://input'));
     $sql = "CALL UpdatePost('$post->post_title','$post->post_description','$post->post_category','$post->expiration_date','$id');";
     echo $mySQL->Query($sql, false);
-} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['userid'])) {
-    $id = $_GET['userid'];
+} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['updateuserid'])) {
+    $id = $_GET['updateuserid'];
     $user = json_decode(file_get_contents('php://input'));
     $hashedPassword = password_hash($user->password, PASSWORD_DEFAULT);
     $sql = "CALL UpdateUser('$user->first_name','$user->last_name','$user->email','$user->is_business','$hashedPassword','$id');";
