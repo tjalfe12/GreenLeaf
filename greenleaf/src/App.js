@@ -14,7 +14,7 @@ import Nav from "./components/Nav";
 function App() {
   useEffect(() => {
     async function getPosts() {
-      const url = "http://www.sabox.dk/backend/api.php?getallposts";
+      const url = "http://www.sabox.dk/backend/api.php?getusers";
       const response = await fetch(url);
       const data = await response.json();
       console.log(data["data"]);
