@@ -10,7 +10,7 @@ class MySQL
     public $error = null;
     private $server = "mysql21.unoeuro.com"; // Change to domain name, e.g. www.iloveunicorns.com
     private $username = "sabox_dk"; // Change to the admins username of the server
-    private $password = "dIller34"; // Change to the admins password of the server
+    private $password = "kOlbekOnge21"; // Change to the admins password of the server
     private $database = "sabox_dk_db"; // Change to the name of the database you would like to connect to on the server
     private $port = "3306";
 
