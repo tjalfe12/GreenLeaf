@@ -35,6 +35,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['postid'])) {
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['userid'])) {
     $id = $_GET['userid'];
     $user = json_decode(file_get_contents('php://input'));
-    $sql = "CALL UpdateUser('$user->first_name','$user->last_name','$user->email','$user->is_business','$user->pass','$id');";
+    $hashedPassword = password_hash($user->password, PASSWORD_DEFAULT);
+    $sql = "CALL UpdateUser('$user->first_name','$user->last_name','$user->email','$user->is_business','$hashedPassword','$id');";
     echo $mySQL->Query($sql, false);
 }
