@@ -10,7 +10,7 @@ include_once("MySQL.php");
 //http://www.sabox.dk/backend/api.php
 
 /* To use API endpoints - For example 'getusers' to get an object with all the users, 
-fetch http://www.sabox.dk/backend/api.php?getusers 
+fetch http://www.sabox.dk/backend/api.php?getallusers 
 or http://www.sabox.dk/backend/api.php?getpost=2 to get post with id 2 */
 
 
@@ -18,8 +18,12 @@ or http://www.sabox.dk/backend/api.php?getpost=2 to get post with id 2 */
 $mySQL = new MySQL(true);
 
 //----------- API endpoints for the GET method. Used to retrieve data. --------------
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getusers'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallusers'])) {
     $sql = "SELECT * FROM `Users`;";
+    echo $mySQL->Query($sql, true);
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getuser'])) {
+    $userid = $_GET['getuser'];
+    $sql = "SELECT * FROM `Users` WHERE user_id = $userid;";
     echo $mySQL->Query($sql, true);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getpost'])) {
     $post = $_GET['getpost'];
