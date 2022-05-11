@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getusers'])) {
     echo $mySQL->Query($sql, true);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getpost'])) {
     $post = $_GET['getpost'];
-    $sql = "SELECT * FROM `Entries` WHERE post_id = $post;";
+    $sql = "SELECT * FROM `GetPosts` WHERE post_id = $post;";
     echo $mySQL->Query($sql, true);
 }
 //GetPosts is a 'view' in the database, 
