@@ -9,6 +9,10 @@ include_once("MySQL.php");
 //Online server location:
 //http://www.sabox.dk/backend/api.php
 
+/* To use API endpoints - For example 'getusers' to get an object with all the users, 
+fetch http://www.sabox.dk/backend/api.php?getusers 
+or http://www.sabox.dk/backend/api.php?getpost=2 to get post with id 2 */
+
 
 // Instantiates a MySQL object with auto-connect enabled (the parameter is set to true).
 $mySQL = new MySQL(true);
