@@ -6,6 +6,7 @@ header("Access-Control-Allow-Methods: *");
 header("Content-Type: application/json; charset=UTF-8");
 include_once("MySQL.php");
 
+//Online server location:
 //http://www.sabox.dk/backend/api.php
 
 
