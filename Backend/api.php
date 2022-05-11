@@ -17,7 +17,7 @@ or http://www.sabox.dk/backend/api.php?getpost=2 to get post with id 2 */
 // Instantiates a MySQL object with auto-connect enabled (the parameter is set to true).
 $mySQL = new MySQL(true);
 
-//API endpoints for the GET method. Used to retrieve data.
+//----------- API endpoints for the GET method. Used to retrieve data. --------------
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getusers'])) {
     $sql = "SELECT * FROM `Users`;";
     echo $mySQL->Query($sql, true);
@@ -31,8 +31,12 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
     $sql = "SELECT * FROM `GetPosts`;";
     echo $mySQL->Query($sql, true);
 }
+// ------------------------------------------------------------------------------------
 
-//API endpoints for the PUT method. Used to send data to server and subsequently to database.
+
+
+
+//------- API endpoints for the PUT method. Used to send data to server. --------------
 //"CALL UpdatePost()" and "CALL UpdateUser()" refers to stored procedures in the database.
 else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['postid'])) {
     $id = $_GET['postid'];
@@ -46,3 +50,4 @@ else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['postid'])) {
     $sql = "CALL UpdateUser('$user->first_name','$user->last_name','$user->email','$user->is_business','$hashedPassword','$id');";
     echo $mySQL->Query($sql, false);
 }
+// -------------------------------------------------------------------------------------
