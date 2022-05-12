@@ -40,7 +40,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
 
 
 
-//------- API endpoints for the PUT method. Used to send data to server. --------------
+//------- API endpoints for the PUT method. Use to change/replace data in DB. --------------
 //"CALL UpdatePost()" and "CALL UpdateUser()" refers to stored procedures in the database.
 // To update a post, send the following object structure along in the body of the fetch request.
 
@@ -67,6 +67,22 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
     $user = json_decode(file_get_contents('php://input'));
     $hashedPassword = password_hash($user->password, PASSWORD_DEFAULT);
     $sql = "CALL UpdateUser('$user->first_name','$user->last_name','$user->email','$user->is_business','$hashedPassword','$id');";
+    echo $mySQL->Query($sql, false);
+}
+//-------------------------------------------------------------------------------------
+
+
+
+//----------- API endpoints for the POST method. Adds new entries in the database.-----
+
+else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createpost'])) {
+    $post = json_decode(file_get_contents('php://input'));
+    $sql = "CALL AddPost('$post->post_description','$post->expiration_date','$post->post_categoryid','$post->post_title','$post->user_id','$post->img');";
+    echo $mySQL->Query($sql, false);
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createuser'])) {
+    $user = json_decode(file_get_contents('php://input'));
+    $pass = password_hash($user->password, PASSWORD_DEFAULT);
+    $sql = "CALL AddUser('$user->first_name','$user->last_name','$user->email','$pass','$user->is_business');";
     echo $mySQL->Query($sql, false);
 }
 // -------------------------------------------------------------------------------------
