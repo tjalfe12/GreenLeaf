@@ -12,6 +12,8 @@ import Userpage from "./pages/Userpage.js";
 import Nav from "./components/Nav";
 
 function App() {
+  const [logged, setLogged] = useState(false);
+
   useEffect(() => {
     async function getPosts() {
       const url = "http://www.sabox.dk/backend/api.php?getallusers";
@@ -21,6 +23,10 @@ function App() {
     }
     getPosts();
   }, []);
+
+  function toggleLogged() {
+    setLogged(true);
+  }
 
   return (
     <main className="App">

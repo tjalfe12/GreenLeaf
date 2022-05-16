@@ -87,10 +87,6 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createpost'])) {
     $post = json_decode(file_get_contents('php://input'));
     $sql = "CALL AddPost('$post->post_description','$post->expiration_date','$post->post_categoryid','$post->post_title','$post->user_id','$post->img');";
     echo $mySQL->Query($sql, false);
-    if (isset($_FILES['fileToUpload'])) {
-        $file = $_FILES['fileToUpload'];
-        $uploader->insertPostImgToDB($file, "imgs/", $mySQL, $post->post_title);
-    }
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createuser'])) {
     $user = json_decode(file_get_contents('php://input'));
     $pass = password_hash($user->password, PASSWORD_DEFAULT);
