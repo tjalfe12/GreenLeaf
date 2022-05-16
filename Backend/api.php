@@ -1,10 +1,16 @@
 <?php
 session_start();
+ob_start();
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 header("Content-Type: application/json; charset=UTF-8");
 include_once("MySQL.php");
+include_once("authenticator.php");
+$homeLocation = "http://localhost:3001";
+
+
+
 
 //Online server location:
 //http://www.sabox.dk/backend/api.php
@@ -16,6 +22,8 @@ or http://www.sabox.dk/backend/api.php?getpost=2 to get post with id 2 */
 
 // Instantiates a MySQL object with auto-connect enabled (the parameter is set to true).
 $mySQL = new MySQL(true);
+$auth = new Authenticator();
+
 
 //----------- API endpoints for the GET method. Used to retrieve data. --------------
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallusers'])) {
@@ -86,3 +94,40 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createpost'])) {
     echo $mySQL->Query($sql, false);
 }
 // -------------------------------------------------------------------------------------
+
+
+//----------- API endpoints for the DELETE method. Deletes entries from database.-------
+else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['deletepost'])) {
+    $post = $_GET['deletepost'];
+    $sql = "CALL DeletePost('$post');";
+    echo $mySQL->Query($sql, false);
+}
+// -------------------------------------------------------------------------------------
+
+//Class for testing purposes
+class TestUser
+{
+    public $first_name = "Helle";
+    public $last_name = "Ib";
+    public $email = "hi@gmail.com";
+    public $password = "password";
+    public $is_business = "1";
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['login'])) {
+    $user = json_decode(file_get_contents('php://input'));
+    $loginStatus = $auth->verify($user->userEmail, $user->userPassword, $mySQL);
+
+    if ($loginStatus == "success") {
+        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\"}";
+    } else if ($loginStatus == "badPass") {
+        echo "{\"status\":\"failed\",\"msg\":\"Wrong password.\"}";
+    } else if ($loginStatus == "noUser") {
+        echo "{\"status\":\"failed\",\"msg\":\"User not found\"}";
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['loginSuccess'])) {
+    echo $_COOKIE['currentUser'];
+}
