@@ -5,23 +5,23 @@ class Upload
 {
     private $homeLocation = "http://localhost:3001";
 
-    function insertImgToDB($file, $targetFolder, $db, $userid)
+    function insertPostImgToDB($file, $targetFolder, $db, $postId)
     {
 
-        $fileName = $userid . "__" . basename($file["name"]);
+        $fileName = "post" . $postId . "__" . basename($file["name"]);
         $path = $targetFolder . $fileName;
 
 
-        if ($userid != null) {
+        if ($postId != null) {
             if ($file['error'] != 1) {
                 move_uploaded_file($file["tmp_name"], $targetFolder . $fileName);
-                $db->Query("UPDATE settings SET img = '$path' WHERE userid = $userid;", 0);
-                header("location:$this->homeLocation");
+                $db->Query("UPDATE Entries SET postImg_url = '$path' WHERE post_title = $postId;", 0);
+                // header("location:$this->homeLocation");
             } else {
-                header("location:$this->homeLocation");
+                // header("location:$this->homeLocation");
             }
         } else {
-            header("location:$this->homeLocation");
+            // header("location:$this->homeLocation");
         }
     }
 
