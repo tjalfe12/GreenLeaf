@@ -12,29 +12,27 @@ import Userpage from "./pages/Userpage.js";
 import Nav from "./components/Nav";
 
 function App() {
-  const [logged, setLogged] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    login: false,
+    email: "",
+    password: "",
+  });
 
   useEffect(() => {
-    async function getPosts() {
-      const url = "http://www.sabox.dk/backend/api.php?getallusers";
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data["data"]);
-    }
-    getPosts();
-  }, []);
+    console.log(currentUser);
+  }, [currentUser]);
 
-  function toggleLogged() {
-    setLogged(true);
+  function userLogin(user) {
+    setCurrentUser({ ...user });
   }
 
   return (
     <main className="App">
-      <Nav />
+      <Nav user={currentUser} />
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login sendtoggle={userLogin} />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/single" element={<SinglePost />} />

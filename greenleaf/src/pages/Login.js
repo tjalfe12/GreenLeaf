@@ -1,19 +1,29 @@
 import { useState, useEffect } from "react";
 
-export default function Login() {
+export default function Login(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState({
+    login: false,
+    email: "",
+    password: "",
+  });
   const [data, setData] = useState("");
 
   useEffect(() => {
     if (data.status === "success") {
-      setLoggedIn(true);
+      setLoggedIn({ login: true, email: email, password: password });
       alert("Logged in!");
     } else if (data.status === "failed") {
       console.log("failed to login");
     }
   }, [data]);
+
+  useEffect(() => {
+    if (loggedIn.login === true) {
+      props.sendtoggle(loggedIn);
+    }
+  }, [loggedIn]);
 
   async function login(event) {
     event.preventDefault();
