@@ -16,6 +16,8 @@ function App() {
     login: false,
     email: "",
     password: "",
+    id: "",
+    img: "",
   });
 
   useEffect(() => {

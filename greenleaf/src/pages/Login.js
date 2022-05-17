@@ -7,12 +7,20 @@ export default function Login(props) {
     login: false,
     email: "",
     password: "",
+    id: "",
+    img: "",
   });
   const [data, setData] = useState("");
 
   useEffect(() => {
     if (data.status === "success") {
-      setLoggedIn({ login: true, email: email, password: password });
+      setLoggedIn({
+        login: true,
+        email: email,
+        password: password,
+        id: data.id,
+        img: data.img,
+      });
       alert("Logged in!");
     } else if (data.status === "failed") {
       console.log("failed to login");

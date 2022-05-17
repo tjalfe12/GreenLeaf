@@ -11,7 +11,7 @@ class Authenticator
             $passCheck = password_verify($targetPassword, $user->pass);
 
             if ($passCheck) {
-                return "success";
+                return $user;
             } else {
                 return "badPass";
             }

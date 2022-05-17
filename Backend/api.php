@@ -120,8 +120,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['login'])) {
     $user = json_decode(file_get_contents('php://input'));
     $loginStatus = $auth->verify($user->userEmail, $user->userPassword, $mySQL);
 
-    if ($loginStatus == "success") {
-        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\"}";
+
+    if ($loginStatus->user_id != null) {
+        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\",\"id\":\"" . $loginStatus->user_id . "\", \"img\":\"" . $loginStatus->img_url . "\"}";
     } else if ($loginStatus == "badPass") {
         echo "{\"status\":\"failed\",\"msg\":\"Wrong password.\"}";
     } else if ($loginStatus == "noUser") {

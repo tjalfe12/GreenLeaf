@@ -17,7 +17,7 @@ export default function Nav(props) {
 
 function UserHeader(props) {
   if (props.user.login === true) {
-    return <h1>{props.user.email}</h1>;
+    return <img src={props.user.img} alt="Profile" width="30" heigh="30"></img>;
   } else {
     return <h2>not logged in</h2>;
   }
