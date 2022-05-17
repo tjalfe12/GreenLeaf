@@ -37,6 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallusers'])) {
     $post = $_GET['getpost'];
     $sql = "SELECT * FROM `GetPosts` WHERE post_id = $post;";
     echo $mySQL->Query($sql, true);
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getcategories'])) {
+    $sql = "SELECT * FROM `Categories`;";
+    echo $mySQL->Query($sql, true);
 }
 //GetPosts is a 'view' in the database, 
 else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
