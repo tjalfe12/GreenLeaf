@@ -35,7 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallusers'])) {
     echo $mySQL->Query($sql, true);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getpost'])) {
     $post = $_GET['getpost'];
-    $sql = "SELECT * FROM `GetPosts` WHERE post_id = $post;";
+    $sql = "SELECT * FROM Entries
+JOIN Users
+ON Entries.user_id = Users.user_id 
+WHERE post_id = $post;";
     echo $mySQL->Query($sql, true);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getcategories'])) {
     $sql = "SELECT * FROM `Categories`;";
@@ -43,7 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallusers'])) {
 }
 //GetPosts is a 'view' in the database, 
 else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
-    $sql = "SELECT * FROM `GetPosts`;";
+    $sql = "SELECT * FROM Entries
+JOIN Users
+ON Entries.user_id = Users.user_id;";
     echo $mySQL->Query($sql, true);
 }
 // ------------------------------------------------------------------------------------
