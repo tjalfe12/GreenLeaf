@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 export default function UpdateButton({ post_id }) {
   const navigate = useNavigate();
 
-  function handleClick() {
-    console.log("you clicked UPDATE");
-    navigate(`/posts/${post_id}`);
+  function handleUpdateButton() {
+    console.log("you clicked UPDATE : " + post_id);
+    navigate(`/about`);
   }
 
   return (
     <div>
-      <button onClick={handleClick}>Update</button>
+      <button onClick={handleUpdateButton}>Update</button>
     </div>
   );
 }
