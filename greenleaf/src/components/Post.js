@@ -51,8 +51,11 @@ export default function Post({ post }) {
       <h5>expiration date: {post.expiration_date}</h5>
       <p>{post.post_description}</p>
       {/* <UpdateButton /> */}
-      {showUpdateButton()}
-      {showDeleteButton()}
+      <div>
+        {/*       {showUpdateButton()} */}
+        {showDeleteButton()}
+      </div>
+
       <hr />
     </article>
   );
