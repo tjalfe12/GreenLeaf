@@ -19,9 +19,9 @@ export default function Post({ post }) {
 
     if (userId === post.user_id) {
       return (
-        <div>
-          <UpdateButton />;
-        </div>
+        <>
+          <UpdateButton />
+        </>
       );
     }
   }
@@ -34,9 +34,9 @@ export default function Post({ post }) {
 
     if (userId === post.user_id) {
       return (
-        <div>
-          <DeleteButton />;
-        </div>
+        <>
+          <DeleteButton />
+        </>
       );
     }
   }
@@ -50,9 +50,8 @@ export default function Post({ post }) {
       <h2>{post.post_title}</h2>
       <h5>expiration date: {post.expiration_date}</h5>
       <p>{post.post_description}</p>
-      {/* <UpdateButton /> */}
       <div>
-        {/*       {showUpdateButton()} */}
+        {showUpdateButton()}
         {showDeleteButton()}
       </div>
 
