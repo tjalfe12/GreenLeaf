@@ -297,3 +297,7 @@ article .avatar img {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.login-section {
+  background-color: bisque;
+}
