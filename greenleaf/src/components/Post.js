@@ -12,8 +12,6 @@ export default function Post({ post }) {
     navigate(`/single/${post.post_id}`);
   }
   function showUpdateButton() {
-    console.log("POST USERS IDs");
-    console.log(post);
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
     console.log(userId);
 
@@ -27,10 +25,7 @@ export default function Post({ post }) {
   }
 
   function showDeleteButton() {
-    console.log("POST USERS IDs");
-    console.log(post);
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
-    console.log(userId);
 
     if (userId === post.user_id) {
       return (
