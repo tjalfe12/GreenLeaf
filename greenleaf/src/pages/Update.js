@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
 import imgPlaceholder from "../default.png";
+import { useParams } from "react-router-dom";
 
-export default function Update({post_id}) {
+export default function Update(props) {
+  const params = useParams();
+  const [post, setPost] = useState({});
+  const url = `http://www.sabox.dk/backend/api.php?getpost=${params.post_id}`;
 
   useEffect(() => {
-      async function getPost() {
-          const url = `http://www.sabox.dk/backend/api.php?getpost=${params.post_id}`;
-          const response = await fetch(url);
-          const data = await response.json();
-          setPost(data.data[0]);
-          console.log(data.data)
-      }
+    async function getPost() {
+      const response = await fetch(url);
+      const data = await response.json();
+      setPost(data.data[0]);
+      console.log(data.data);
+    }
 
-      getPost();
+    getPost();
   }, [url]);
-
 
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -127,5 +129,4 @@ export default function Update({post_id}) {
       </form>
     </div>
   );
-}
 }

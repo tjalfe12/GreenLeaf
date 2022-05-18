@@ -11,6 +11,7 @@ export default function Post({ post }) {
   function handleClick() {
     navigate(`/single/${post.post_id}`);
   }
+
   function showUpdateButton() {
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
     console.log(userId);
@@ -18,7 +19,7 @@ export default function Post({ post }) {
     if (userId === post.user_id) {
       return (
         <>
-          <UpdateButton />
+          <UpdateButton post_id={post.post_id} />
         </>
       );
     }

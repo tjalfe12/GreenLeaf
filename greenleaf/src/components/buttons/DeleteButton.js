@@ -12,7 +12,7 @@ export default function DeleteButton({ post_id }) {
 
   return (
     <div>
-      <button onClick={() => deletePost(post_id)}>Delete</button>
+      <button onClick={deletePost}>Delete</button>
     </div>
   );
 }
