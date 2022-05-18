@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function SinglePost({ post }) {
+export default function Post({ post }) {
     const navigate = useNavigate();
 
     /**

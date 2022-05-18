@@ -1,17 +1,26 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Post from "../components/Post";
+
 export default function SinglePost() {
-  return (
-    <div>
-      <h1>Create</h1>
-      <img src="" alt="placeholder" />
-      <br />
-      <br />
-      <h1>Title</h1>
-      <br />
-      <br />
-      <p>This is info about product</p>
-      <br />
-      <br />
-      <input type="submit" value="Order"></input>
-    </div>
-  );
+    const [post, setPost] = useState({});
+    const params = useParams();
+    const url = `http://www.sabox.dk/backend/api.php?getpost=${params.postId}`;
+
+    useEffect(() => {
+        async function getPost() {
+            const response = await fetch(url);
+            const data = await response.json();
+            setPost(data.data[0]);
+            console.log(data.data)
+        }
+
+        getPost();
+    }, [url]);
+
+    return (
+        <section className="page">
+            <Post post={post} />
+        </section>
+    );
 }
