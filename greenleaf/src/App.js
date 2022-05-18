@@ -35,11 +35,14 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/create" element={<Create user={currentUser} />} />
         <Route path="/" element={<Login sendtoggle={userLogin} />} />
-        <Route path="/posts" element={<Posts />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/single/:postId" element={<SinglePost />} />
-        <Route path="/posts/:postId" element={<Update />} />
-        <Route path="/userpage" element={<Userpage />} />
+        <Route path="/posts" element={<Posts user={currentUser} />} />
+        <Route path="/signup" element={<Signup user={currentUser} />} />
+        <Route
+          path="/single/:postId"
+          element={<SinglePost user={currentUser} />}
+        />
+        <Route path="/posts/:postId" element={<Update user={currentUser} />} />
+        <Route path="/userpage" element={<Userpage user={currentUser} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </main>
