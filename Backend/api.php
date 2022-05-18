@@ -50,7 +50,6 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
 
 
 
-
 //------- API endpoints for the PUT method. Use to change/replace data in DB. --------------
 //"CALL UpdatePost()" and "CALL UpdateUser()" refers to stored procedures in the database.
 // To update a post, send the following object structure along in the body of the fetch request.
@@ -88,8 +87,13 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
 
 else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createpost'])) {
     $post = json_decode(file_get_contents('php://input'));
-    $sql = "CALL AddPost('$post->post_description','$post->expiration_date','$post->post_categoryid','$post->post_title','$post->user_id','$post->img');";
+    $filename = str_replace(' ', '', $post->post_title);
+    $filePath = $post->user_id . "__" . $filename . ".png";
+    $onlinePath = "http://sabox.dk/imgs/${filePath}";
+    file_put_contents("../imgs/${filePath}", file_get_contents($post->post_img));
+    $sql = "CALL AddPost('$post->post_description','$post->expiration_date','$post->post_categoryid','$post->post_title','$post->user_id','$onlinePath');";
     echo $mySQL->Query($sql, false);
+    var_dump($post);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createuser'])) {
     $user = json_decode(file_get_contents('php://input'));
     $pass = password_hash($user->password, PASSWORD_DEFAULT);

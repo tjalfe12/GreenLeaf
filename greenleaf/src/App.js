@@ -33,7 +33,7 @@ function App() {
       <Nav user={currentUser} />
       <Routes>
         <Route path="/about" element={<About />} />
-        <Route path="/create" element={<Create />} />
+        <Route path="/create" element={<Create user={currentUser} />} />
         <Route path="/" element={<Login sendtoggle={userLogin} />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/signup" element={<Signup />} />
