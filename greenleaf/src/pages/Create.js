@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import imgPlaceholder from "../default.png";
 
 export default function Create(props) {
   const [image, setImage] = useState("");
@@ -63,6 +64,16 @@ export default function Create(props) {
     <div>
       <h1>Create</h1>
       <form onSubmit={handleSubmit}>
+        <img
+          className="image-preview"
+          src={image}
+          alt=" "
+          height="70"
+          width="70"
+          onError={(event) => (event.target.src = imgPlaceholder)}
+        />
+        <br />
+        <br />
         <input type="file" accept="image/*" onChange={handleImageChange} />
         <br />
         <br />
