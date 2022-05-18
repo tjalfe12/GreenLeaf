@@ -37,7 +37,7 @@ function App() {
         <Route path="/" element={<Login sendtoggle={userLogin} />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/single" element={<SinglePost />} />
+        <Route path="/single/:postId" element={<SinglePost />} />
         <Route path="/posts/:postId" element={<Update />} />
         <Route path="/userpage" element={<Userpage />} />
         <Route path="*" element={<Navigate to="/" />} />
