@@ -1,17 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import UpdateButton from "./buttons/UpdateButton";
 import DeleteButton from "./buttons/DeleteButton";
+import SinglePostButton from "./buttons/SinglePostButton";
 
-export default function Post({ post }) {
-  const navigate = useNavigate();
-
-  /**
-   * handleClick is called when user clicks on the Article (PostCard)
-   */
-  function handleClick() {
-    navigate(`/single/${post.post_id}`);
-  }
-
+export default function Post({ post, single }) {
   function showUpdateButton() {
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
     console.log(userId);
@@ -37,8 +29,18 @@ export default function Post({ post }) {
     }
   }
 
+  function showSingleButton() {
+    if (single !== "true") {
+      return (
+        <>
+          <SinglePostButton post_id={post.post_id} />
+        </>
+      );
+    }
+  }
+
   return (
-    <article onClick={handleClick}>
+    <article>
       <h3>
         {post.first_name} {post.last_name}
       </h3>
@@ -47,6 +49,7 @@ export default function Post({ post }) {
       <h5>expiration date: {post.expiration_date}</h5>
       <p>{post.post_description}</p>
       <div>
+        {showSingleButton()}
         {showUpdateButton()}
         {showDeleteButton()}
       </div>

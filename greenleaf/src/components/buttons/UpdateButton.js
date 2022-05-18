@@ -5,12 +5,13 @@ export default function UpdateButton({ post_id }) {
 
   function handleUpdateButton() {
     console.log("you clicked UPDATE : " + post_id);
-    navigate(`/about`);
+    navigate(`/posts/${post_id}`);
+    console.log("UPDATE WENT TAHROUGH");
   }
 
   return (
-    <div>
+    <>
       <button onClick={handleUpdateButton}>Update</button>
-    </div>
+    </>
   );
 }
