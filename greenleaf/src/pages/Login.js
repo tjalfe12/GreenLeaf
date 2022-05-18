@@ -49,7 +49,7 @@ export default function Login(props) {
   }
 
   return (
-    <div>
+    <div className="login-section">
       <h1>Login</h1>
       <form onSubmit={login}>
         <input
