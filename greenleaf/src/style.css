@@ -1,6 +1,6 @@
 /* ---------- root variables ---------- */
 :root {
-  --green: #73D750;
+  --green: #73d750;
   --light-green: rgb(172, 198, 201);
   --light-grey: #f1f1f4;
   --text-color-light: #f1f1f1;
@@ -13,8 +13,8 @@ body {
   color: var(--text-color-dark);
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Nunito", "Dancing Script"
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Nunito",
+    "Dancing Script" sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -299,4 +299,7 @@ article .avatar img {
 .login-section {
   background-image: url(./assets/IMG_0043.JPG);
   background-size: cover;
+}
+.login-section {
+  background-color: bisque;
 }

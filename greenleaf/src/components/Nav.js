@@ -8,7 +8,6 @@ export default function Nav(props) {
       <NavLink to="/">Login </NavLink>
       <NavLink to="/posts">Posts </NavLink>
       <NavLink to="/signup">Sign-Up </NavLink>
-      <NavLink to="/single">SinglePost </NavLink>
       <NavLink to="/userpage">UserPage </NavLink>
       <UserHeader user={props.user} />
     </nav>

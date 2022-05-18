@@ -11,26 +11,22 @@ export default function Post({ post }) {
   function handleClick() {
     navigate(`/single/${post.post_id}`);
   }
+
   function showUpdateButton() {
-    console.log("POST USERS IDs");
-    console.log(post);
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
     console.log(userId);
 
     if (userId === post.user_id) {
       return (
         <>
-          <UpdateButton />
+          <UpdateButton post_id={post.post_id} />
         </>
       );
     }
   }
 
   function showDeleteButton() {
-    console.log("POST USERS IDs");
-    console.log(post);
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
-    console.log(userId);
 
     if (userId === post.user_id) {
       return (
