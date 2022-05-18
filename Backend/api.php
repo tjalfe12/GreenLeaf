@@ -110,7 +110,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createpost'])) {
 
 
 //----------- API endpoints for the DELETE method. Deletes entries from database.-------
-else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['deletepost'])) {
+else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['deletepost'])) {
     $post = $_GET['deletepost'];
     $sql = "CALL DeletePost('$post');";
     echo $mySQL->Query($sql, false);

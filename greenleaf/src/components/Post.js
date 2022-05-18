@@ -35,7 +35,7 @@ export default function Post({ post }) {
     if (userId === post.user_id) {
       return (
         <>
-          <DeleteButton />
+          <DeleteButton post_id={post.post_id} />
         </>
       );
     }
