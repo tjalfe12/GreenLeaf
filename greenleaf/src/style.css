@@ -20,14 +20,13 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Nunito", "Dancing Script";
 }
 
-main {
+/* main {
   padding: 58px 0 0;
-  background-color: var(--light-green);
-}
+  background-color: #333;
+} */
 
 h1 {
   font-size: 2em;
@@ -50,7 +49,7 @@ a {
 }
 
 .page {
-  background-color: var(--light-green);
+  background-color: red;
   min-height: calc(100vh - 58px - 2em);
   padding: 1em;
 }
@@ -90,18 +89,18 @@ a {
 
 /* ---------- nav styling ---------- */
 nav {
-  background-color: var(--green);
+  background-color: var(--white);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  text-align: center;
+  text-align: right;
 }
 
 /* Style the links inside the navigation bar */
 nav a {
   display: inline-block;
-  color: var(--text-color-light);
+  color: var(--text-color-dark);
   text-align: center;
   padding: 20px 16px;
   text-decoration: none;
@@ -111,13 +110,12 @@ nav a {
 
 /* Change the color of links on hover */
 nav a:hover {
-  background-color: var(--light-grey);
-  color: var(--text-color-dark);
+  color: var(--green);
 }
 
 /* Add a color to the active/current link */
 nav a.active {
-  background-color: var(--light-green);
+  border-bottom: 0.2em solid var(--green);
   color: var(--green);
 }
 
@@ -299,7 +297,8 @@ article .avatar img {
 }
 
 .login-section {
-  background-color: bisque;
+  background-image: url(./assets/IMG_0043.JPG);
+  background-size: cover;
 }
 .login-section {
   background-color: bisque;
