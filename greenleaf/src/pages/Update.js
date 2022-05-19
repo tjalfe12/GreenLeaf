@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import imgPlaceholder from "../default.png";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 
 export default function Update(props) {
+  const navigate = useNavigate();
   const params = useParams();
   const [post, setPost] = useState({});
   const url = `http://www.sabox.dk/backend/api.php?getpost=${params.postId}`;
@@ -13,9 +14,10 @@ export default function Update(props) {
   const [expiration, setExpiration] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [post_id, setPost_id] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    if (post.post_title !== null) {
+    if (toggle === true) {
       sendPost();
     }
   }, [post]);
@@ -61,6 +63,7 @@ export default function Update(props) {
     });
     const data = await response.text();
     console.log(data);
+    navigate("/posts");
   }
 
   async function handleSubmit(event) {
@@ -73,6 +76,7 @@ export default function Update(props) {
       post_img: image,
       user_id: props.user.id,
     });
+    setToggle(true);
   }
 
   return (

@@ -75,7 +75,11 @@ ON Entries.user_id = Users.user_id;";
 */ else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['updatepostid'])) {
     $id = $_GET['updatepostid'];
     $post = json_decode(file_get_contents('php://input'));
-    $sql = "CALL UpdatePost('$post->post_title','$post->post_description','$post->post_category','$post->expiration_date','$id');";
+    $filename = str_replace(' ', '', $post->post_title);
+    $filePath = $post->user_id . "__" . $filename . ".png";
+    $onlinePath = "http://sabox.dk/imgs/${filePath}";
+    file_put_contents("../imgs/${filePath}", file_get_contents($post->post_img));
+    $sql = "CALL UpdatePost('$post->post_title','$post->post_description','$post->post_category','$post->expiration_date','$id','$onlinePath');";
     echo $mySQL->Query($sql, false);
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['updateuserid'])) {
     $id = $_GET['updateuserid'];
