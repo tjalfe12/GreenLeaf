@@ -55,16 +55,19 @@ export default function Login(props) {
     <div className="login-section">
       <h1>Login</h1>
       <form onSubmit={login}>
+      <label for="email.field">Email:</label>
         <input
+          id="email-field"
           type="text"
           value={email}
-          placeholder="Name"
+          placeholder="example@gmail.com"
           onChange={(e) => setEmail(e.target.value)}
         />
+        <label for="password-field">Password:</label>
         <input
+          id="password-field"
           type="password"
           value={password}
-          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />

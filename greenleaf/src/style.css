@@ -6,7 +6,7 @@
   --text-color-light: #f1f1f1;
   --text-color-dark: #333;
   --text-color-danger: rgb(152, 58, 58);
-  --white: #f1f1f1;
+  --white: #fff;
 }
 
 body {
@@ -22,11 +22,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Nunito", "Dancing Script";
 }
-
-/* main {
-  padding: 58px 0 0;
-  background-color: #333;
-} */
 
 h1 {
   font-size: 2em;
@@ -89,12 +84,21 @@ a {
 
 /* ---------- nav styling ---------- */
 nav {
+  display: inline-grid;
+  grid-template-columns: 46% auto auto auto auto auto auto 4%;
+  column-gap: 0;
+  align-items: center;
+  justify-content: center;
   background-color: var(--white);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  text-align: right;
+}
+
+.logo {
+  display: flex;
+  margin-left: 4%;
 }
 
 /* Style the links inside the navigation bar */
@@ -162,15 +166,15 @@ nav a.active {
 }
 
 /* ---------- form styling ---------- */
-
 form {
   margin: auto;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  text-align: center;
   padding: 1em 1em 2em;
   background-color: var(--white);
+  opacity: 80%;
   max-width: 380px;
-  animation: fadeIn 0.5s;
+  text-align: left;
+  border-radius: 4px;
+  /* animation: fadeIn 0.5s; */
 }
 
 form button {
@@ -210,8 +214,12 @@ button.btn-outline {
   padding: 2.032em 1em;
 }
 
+label {
+  margin: 1em;
+}
+
 input {
-  margin: 1em auto;
+  margin: 0 1em 1em 1em;
   width: 100%;
   max-width: 350px;
   padding: 1em;
@@ -219,6 +227,7 @@ input {
   display: block;
   background: var(--white);
   border: solid 2px var(--green);
+  border-radius: 4px;
 }
 
 .image-preview {
