@@ -9,35 +9,31 @@ function UserHeader(props) {
 
 export default function Nav(props) {
   function showNav() {
-    if (props.user.login === true) {
+    if ((props.user.login === true) === true) {
       return (
         <>
-          <NavLink to="/about">About </NavLink>
-          <NavLink to="/create">Create </NavLink>
+          <nav>
+            <div className="logo">
+              <img
+                src={require("../assets/logo.PNG")}
+                alt="logo"
+                height="44px"
+              ></img>
+            </div>
+            {/* <div className="links"> */}
+            <NavLink to="/about">About </NavLink>
+            <NavLink to="/create">Create </NavLink>
 
-          <NavLink to="/posts">Posts </NavLink>
-          <NavLink to="/signup">Sign-Up </NavLink>
-          <NavLink to="/userpage">UserPage </NavLink>
-          <UserHeader user={props.user} />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <NavLink to="/">Login </NavLink>
+            <NavLink to="/posts">Posts </NavLink>
+            <NavLink to="/signup">Sign-Up </NavLink>
+            <NavLink to="/userpage">UserPage </NavLink>
+            <UserHeader user={props.user} />
+            {/* </div> */}
+          </nav>
         </>
       );
     }
   }
 
-  return (
-    <nav>
-      <div className="logo">
-        <img src={require("../assets/logo.PNG")} alt="logo" height="44px"></img>
-      </div>
-      {/* <div className="links"> */}
-      {showNav()}
-      {/* </div> */}
-    </nav>
-  );
+  return <>{showNav()}</>;
 }
