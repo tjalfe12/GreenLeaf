@@ -2,7 +2,7 @@
 :root {
   --green: #73d750;
   --light-green: rgb(172, 198, 201);
-  --light-grey: #f1f1f4;
+  --golden: #ffd700;
   --text-color-light: #f1f1f1;
   --text-color-dark: #333;
   --text-color-danger: rgb(152, 58, 58);
@@ -45,7 +45,7 @@ a {
 }
 
 .page {
-  background-color: var(--light-grey);
+  background-color: var(--light-green);
   min-height: calc(100vh - 58px - 2em); 
   padding: 1em;
 }
@@ -63,7 +63,7 @@ a {
 
 /* ---------- animations ---------- */
 /* fade in */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -81,7 +81,7 @@ a {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 /* ---------- nav styling ---------- */
 nav {
@@ -184,7 +184,7 @@ form {
   max-width: 380px;
   text-align: left;
   border-radius: 4px;
-  /* animation: fadeIn 0.5s; */
+  animation: fadeIn 0.5s;
 }
 
 form button {
@@ -199,8 +199,8 @@ button {
   text-align: center;
   cursor: pointer;
   border: none;
-  color: var(--text-color-light);
-  background-color: var(--green);
+  color: var(--text-color-dark);
+  background-color: var(--golden);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 0.5em 1em;
