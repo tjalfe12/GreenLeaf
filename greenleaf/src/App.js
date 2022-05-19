@@ -10,8 +10,10 @@ import SinglePost from "./pages/Singlepost.js";
 import Update from "./pages/Update.js";
 import Userpage from "./pages/Userpage.js";
 import Nav from "./components/Nav";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({
     login: false,
     email: "",
@@ -27,6 +29,39 @@ function App() {
     console.log(JSON.parse(localStorage.getItem("userLoggedIn")));
   }, [currentUser]);
 
+  function signOut() {
+    setCurrentUser({
+      login: false,
+      email: "",
+      password: "",
+      id: "",
+      img: "",
+    });
+    localStorage.setItem("userLoggedIn", null);
+  }
+
+  function showPages() {
+    if (currentUser.login === true) {
+      return (
+        <>
+          <Route path="/about" element={<About />} />
+          <Route path="/create" element={<Create user={currentUser} />} />
+          <Route path="/posts" element={<Posts user={currentUser} />} />
+          <Route path="/signup" element={<Signup user={currentUser} />} />
+          <Route
+            path="/single/:postId"
+            element={<SinglePost user={currentUser} />}
+          />
+          <Route
+            path="/posts/:postId"
+            element={<Update user={currentUser} />}
+          />
+          <Route path="/userpage" element={<Userpage user={currentUser} />} />
+        </>
+      );
+    }
+  }
+
   function userLogin(user) {
     setCurrentUser({ ...user });
     localStorage.setItem("loggedIn", "true");
@@ -34,20 +69,11 @@ function App() {
 
   return (
     <main className="App">
-      <Nav user={currentUser} />
+      <Nav user={currentUser} signOut={signOut} />
       <Routes>
-        <Route path="/about" element={<About />} />
-        <Route path="/create" element={<Create user={currentUser} />} />
         <Route path="/" element={<Login sendtoggle={userLogin} />} />
-        <Route path="/posts" element={<Posts user={currentUser} />} />
-        <Route path="/signup" element={<Signup user={currentUser} />} />
-        <Route
-          path="/single/:postId"
-          element={<SinglePost user={currentUser} />}
-        />
-        <Route path="/posts/:postId" element={<Update user={currentUser} />} />
-        <Route path="/userpage" element={<Userpage user={currentUser} />} />
         <Route path="*" element={<Navigate to="/" />} />
+        {showPages()}
       </Routes>
     </main>
   );
