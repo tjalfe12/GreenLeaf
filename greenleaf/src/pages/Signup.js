@@ -12,6 +12,7 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [is_business, setIs_business] = useState("");
+  const [readyToSend, setReadyToSend] = useState(false);
   const [user, setUser] = useState({
     first_name: null,
     last_name: null,
@@ -20,6 +21,22 @@ export default function Signup() {
     is_business: null,
     img_url: null,
   });
+
+  useEffect(() => {
+    async function sendPost() {
+      console.log(user);
+      const url = "http://sabox.dk/backend/api.php?createuser";
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(user),
+      });
+      alert("User Created - please log in");
+      navigate("/");
+    }
+    if (user.first_name !== null) {
+      sendPost();
+    }
+  }, [user]);
 
   function handleImageChange(event) {
     const file = event.target.files[0];
@@ -34,26 +51,7 @@ export default function Signup() {
       setErrorMessage("The image file is too big!");
     }
   }
-
-  useEffect(() => {
-    if (user.first_name !== null) {
-      sendPost();
-    }
-  }, [user]);
-
-  async function sendPost() {
-    console.log(user);
-    const url = "http://sabox.dk/backend/api.php?createuser";
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(user),
-    });
-    const data = await response.text();
-    alert("User Created - please log in.");
-    navigate("/");
-  }
-
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     if (first_name !== "") {
       if (last_name !== "") {
@@ -70,7 +68,15 @@ export default function Signup() {
                   img_url: image,
                 });
               } else {
-                alert("Please choose an image");
+                setImage(imgPlaceholder);
+                setUser({
+                  first_name: first_name,
+                  last_name: last_name,
+                  email: email,
+                  password: password,
+                  is_business: is_business,
+                  img_url: image,
+                });
               }
             } else {
               alert("Are you a business?");
