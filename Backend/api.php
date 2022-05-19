@@ -102,7 +102,10 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createpost'])) {
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['createuser'])) {
     $user = json_decode(file_get_contents('php://input'));
     $pass = password_hash($user->password, PASSWORD_DEFAULT);
-    $sql = "CALL AddUser('$user->first_name','$user->last_name','$user->email','$pass','$user->is_business');";
+    $filePath = $user->first_name . "__" . $user->last_name . ".png";
+    $onlinePath = "http://sabox.dk/imgs/${filePath}";
+    file_put_contents("../imgs/${filePath}", file_get_contents($user->img_url));
+    $sql = "CALL AddUser('$user->first_name','$user->last_name','$user->email','$pass','$user->is_business','$onlinePath');";
     echo $mySQL->Query($sql, false);
 }
 // -------------------------------------------------------------------------------------

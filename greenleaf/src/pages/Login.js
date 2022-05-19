@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import UpdateButton from "../components/buttons/UpdateButton";
+import { useNavigate } from "react-router-dom";
 
 export default function Login(props) {
+  const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [loggedIn, setLoggedIn] = useState({
@@ -31,6 +33,7 @@ export default function Login(props) {
   useEffect(() => {
     if (loggedIn.login === true) {
       props.sendtoggle(loggedIn);
+      navigate("/posts");
     }
   }, [loggedIn]);
 
