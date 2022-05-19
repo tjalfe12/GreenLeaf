@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import imgPlaceholder from "../default.png";
+import imgPlaceholder from "../assets/foodPlaceholder.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Create(props) {
