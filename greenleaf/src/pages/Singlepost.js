@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Post from "../components/Post";
 
-export default function SinglePost() {
+export default function SinglePost(props) {
   const [post, setPost] = useState({});
   const params = useParams();
   const url = `http://www.sabox.dk/backend/api.php?getpost=${params.postId}`;
@@ -20,7 +20,7 @@ export default function SinglePost() {
 
   return (
     <section className="page">
-      <Post post={post} single="true" />
+      <Post getPosts={props.getPosts} post={post} single="true" />
     </section>
   );
 }

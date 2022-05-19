@@ -3,7 +3,7 @@ import UpdateButton from "./buttons/UpdateButton";
 import DeleteButton from "./buttons/DeleteButton";
 import SinglePostButton from "./buttons/SinglePostButton";
 
-export default function Post({ post, single }) {
+export default function Post({ post, single, getPosts }) {
   function showUpdateButton() {
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
     console.log(userId);
@@ -23,7 +23,7 @@ export default function Post({ post, single }) {
     if (userId === post.user_id) {
       return (
         <>
-          <DeleteButton post_id={post.post_id} />
+          <DeleteButton getPosts={getPosts} post_id={post.post_id} />
         </>
       );
     }
