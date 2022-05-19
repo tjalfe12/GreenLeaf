@@ -23,12 +23,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Nunito", "Dancing Script";
 }
 
-/* h1 {
+h1 {
   font-size: 2em;
   font-weight: 500;
   letter-spacing: 0.1px;
-  color: aquamarine;
-} */
+  text-align: center;
+}
 
 h2 {
   font-weight: 500;
@@ -125,7 +125,7 @@ nav a.active {
 }
 
 /* ---------- grid container styling ---------- */
-.grid-container {
+.grid-container{
   display: grid;
   padding-top: 60px;
   grid-template-columns: 1fr 1fr 1fr;
@@ -181,7 +181,8 @@ form {
   padding: 1em 1em 2em;
   background-color: var(--white);
   opacity: 80%;
-  max-width: 380px;
+  min-width: 400px;
+  /* max-width: 380px; */
   text-align: left;
   border-radius: 4px;
   animation: fadeIn 0.5s;
@@ -315,10 +316,20 @@ article .avatar img {
   border-radius: 50%;
 }
 
+/* ------------------ Login Page -------------------- */
 .login-section {
   background-image: url(./assets/IMG_0043.JPG);
   background-size: cover;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
 }
-.login-section {
-  background-color: bisque;
+
+.logo-image {
+  width: fit-content;
+  padding: 1em 4em;
+  background-color: #fff;
+  border-radius: 4px;
 }
