@@ -11,7 +11,7 @@ export default function Signup() {
   const [last_name, setLast_name] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [is_business, setIs_business] = useState("");
+  const [is_business, setIs_business] = useState("0");
   const [readyToSend, setReadyToSend] = useState(false);
   const [user, setUser] = useState({
     first_name: null,
@@ -51,35 +51,28 @@ export default function Signup() {
       setErrorMessage("The image file is too big!");
     }
   }
+
+  function prepareUserState() {
+    setUser({
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password,
+      is_business: is_business,
+      img_url: image,
+    });
+  }
   function handleSubmit(event) {
     event.preventDefault();
     if (first_name !== "") {
       if (last_name !== "") {
         if (email !== "") {
           if (password !== "") {
-            if (is_business !== "") {
-              if (image !== "") {
-                setUser({
-                  first_name: first_name,
-                  last_name: last_name,
-                  email: email,
-                  password: password,
-                  is_business: is_business,
-                  img_url: image,
-                });
-              } else {
-                setImage(imgPlaceholder);
-                setUser({
-                  first_name: first_name,
-                  last_name: last_name,
-                  email: email,
-                  password: password,
-                  is_business: is_business,
-                  img_url: image,
-                });
-              }
+            if (image !== "") {
+              prepareUserState();
             } else {
-              alert("Are you a business?");
+              setImage(imgPlaceholder);
+              prepareUserState();
             }
           } else {
             alert("Please enter a password");
@@ -92,6 +85,14 @@ export default function Signup() {
       }
     } else {
       alert("Pleaser enter your first name");
+    }
+  }
+
+  function checkBox(event) {
+    if (event.target.checked === true) {
+      setIs_business("1");
+    } else {
+      setIs_business("0");
     }
   }
 
@@ -145,11 +146,13 @@ export default function Signup() {
         <br />
         <br />
         <input
-          type="text"
-          value={is_business}
-          placeholder="Is_business?"
-          onChange={(e) => setIs_business(e.target.value)}
+          type="checkbox"
+          id="is_business"
+          name="is_business"
+          value="1"
+          onChange={checkBox}
         />
+        <label for="is_business"> I represent a business</label>
         <br />
         <br />
         <button type="submit">Save</button>
