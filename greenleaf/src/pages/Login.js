@@ -53,8 +53,11 @@ export default function Login(props) {
 
   return (
     <div className="login-section">
-      <h1>Login</h1>
+      <div className="logo-image">
+        <img src={require("../assets/logo.PNG")} alt="logo" height="200px"></img>
+      </div>
       <form onSubmit={login}>
+      <h1>Login</h1>
         <label for="email.field">Email:</label>
         <input
           id="email-field"
