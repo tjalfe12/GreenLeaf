@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import imgPlaceholder from "../default.png";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [first_name, setFirst_name] = useState("");
@@ -46,7 +49,8 @@ export default function Signup() {
       body: JSON.stringify(user),
     });
     const data = await response.text();
-    console.log(data);
+    alert("User Created - please log in.");
+    navigate("/");
   }
 
   async function handleSubmit(event) {
@@ -119,6 +123,8 @@ export default function Signup() {
         <br />
         <br />
         <button type="submit">Save</button>
+        <h3>Return to login?</h3>
+        <NavLink to="/">Login </NavLink>
       </form>
     </div>
   );
