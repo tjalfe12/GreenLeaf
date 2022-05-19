@@ -11,6 +11,7 @@ import Update from "./pages/Update.js";
 import Userpage from "./pages/Userpage.js";
 import Nav from "./components/Nav";
 import { useNavigate } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
         {showPages()}
       </Routes>
+      <Footer signOut={signOut} />
     </main>
   );
 }
