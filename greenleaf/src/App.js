@@ -24,10 +24,7 @@ function App() {
   });
 
   useEffect(() => {
-    console.log(currentUser);
     localStorage.setItem("userLoggedIn", JSON.stringify(currentUser));
-    console.log("user data");
-    console.log(JSON.parse(localStorage.getItem("userLoggedIn")));
   }, [currentUser]);
 
   function signOut() {

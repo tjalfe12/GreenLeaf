@@ -27,7 +27,6 @@ export default function Update(props) {
       const response = await fetch(url);
       const data = await response.json();
       setPost(data.data[0]);
-      console.log(data.data[0]);
 
       setPost_id(data.data[0].post_id);
       setTitle(data.data[0].post_title);
@@ -55,14 +54,12 @@ export default function Update(props) {
   }
 
   async function sendPost() {
-    console.log(post);
     const url = `http://sabox.dk/backend/api.php?updatepostid=${post_id}`;
     const response = await fetch(url, {
       method: "PUT",
       body: JSON.stringify(post),
     });
     const data = await response.text();
-    console.log(data);
     navigate("/posts");
   }
 

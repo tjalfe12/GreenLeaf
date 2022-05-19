@@ -24,7 +24,6 @@ export default function Signup() {
 
   useEffect(() => {
     async function sendPost() {
-      console.log(user);
       const url = "http://sabox.dk/backend/api.php?createuser";
       const response = await fetch(url, {
         method: "POST",
@@ -152,7 +151,7 @@ export default function Signup() {
           value="1"
           onChange={checkBox}
         />
-        <label for="is_business"> I represent a business</label>
+        <label htmlFor="is_business"> I represent a business</label>
         <br />
         <br />
         <button type="submit">Save</button>

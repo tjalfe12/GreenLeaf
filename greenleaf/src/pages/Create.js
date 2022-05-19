@@ -8,7 +8,7 @@ export default function Create(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("0");
   const [expiration, setExpiration] = useState("");
   const [user, setUser] = useState({
     post_title: "",
@@ -35,19 +35,33 @@ export default function Create(props) {
 
   useEffect(() => {
     if (user.user_id !== null) {
-      sendPost();
+      if (title !== "") {
+        if (description) {
+          if (expiration) {
+            if (image) {
+              sendPost();
+            } else {
+              alert("Please choose an image");
+            }
+          } else {
+            alert("Please enter an expiration date");
+          }
+        } else {
+          alert("Please enter a description");
+        }
+      } else {
+        alert("Please enter a title");
+      }
     }
   }, [user]);
 
   async function sendPost() {
-    console.log(user);
     const url = "http://sabox.dk/backend/api.php?createpost";
     const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(user),
     });
     const data = await response.text();
-    console.log(data);
     navigate("/posts");
   }
 
@@ -56,7 +70,7 @@ export default function Create(props) {
     setUser({
       post_title: title,
       post_description: description,
-      post_categoryid: category,
+      // post_categoryid: category,
       expiration_date: expiration,
       post_img: image,
       user_id: props.user.id,
@@ -94,18 +108,18 @@ export default function Create(props) {
           placeholder="Type a description"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <br />
+        {/*  <br />
         <br />
         <input
           type="text"
           value={category}
           placeholder="choose a category"
           onChange={(e) => setCategory(e.target.value)}
-        />
+        /> */}
         <br />
         <br />
         <input
-          type="text"
+          type="date"
           value={expiration}
           placeholder="yyyy-mm-dd"
           onChange={(e) => setExpiration(e.target.value)}

@@ -6,7 +6,6 @@ import SinglePostButton from "./buttons/SinglePostButton";
 export default function Post({ post, single, getPosts }) {
   function showUpdateButton() {
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
-    console.log(userId);
 
     if (userId === post.user_id) {
       return (
@@ -44,7 +43,7 @@ export default function Post({ post, single, getPosts }) {
       <h3>
         {post.first_name} {post.last_name}
       </h3>
-      <img src={post.postImg_url} alt={post.title} width="300" height="400" />
+      <img src={post.postImg_url} alt={post.title} height="350" />
       <h2>{post.post_title}</h2>
       <h5>expiration date: {post.expiration_date}</h5>
       <p>{post.post_description}</p>

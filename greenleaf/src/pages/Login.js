@@ -27,7 +27,6 @@ export default function Login(props) {
       });
       alert("Logged in!");
     } else if (data.status === "failed") {
-      console.log("failed to login");
     }
   }, [data]);
 
@@ -63,7 +62,7 @@ export default function Login(props) {
       </div>
       <form onSubmit={login}>
         <h1>Login</h1>
-        <label for="email.field">Email:</label>
+        <label htmlFor="email.field">Email:</label>
         <input
           id="email-field"
           type="text"
@@ -72,7 +71,7 @@ export default function Login(props) {
           onChange={(e) => setEmail(e.target.value)}
         />
         <br />
-        <label for="password-field">Password:</label>
+        <label htmlFor="password-field">Password:</label>
         <input
           id="password-field"
           type="password"

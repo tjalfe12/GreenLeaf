@@ -12,7 +12,6 @@ export default function Posts() {
     const url = "http://www.sabox.dk/backend/api.php?getallposts";
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data.data);
     setPosts(data.data);
   }
 
