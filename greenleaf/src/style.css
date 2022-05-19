@@ -23,11 +23,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Nunito", "Dancing Script";
 }
 
-h1 {
+/* h1 {
   font-size: 2em;
   font-weight: 500;
   letter-spacing: 0.1px;
-}
+  color: aquamarine;
+} */
 
 h2 {
   font-weight: 500;
@@ -44,14 +45,14 @@ a {
 }
 
 .page {
-  background-color: red;
-  min-height: calc(100vh - 58px - 2em);
+  background-color: var(--light-grey);
+  min-height: calc(100vh - 58px - 2em); 
   padding: 1em;
 }
 
-.text-center {
+/* .text-center {
   text-align: center;
-}
+} */
 .text-error {
   color: var(--text-color-danger);
 }
@@ -126,20 +127,29 @@ nav a.active {
 /* ---------- grid container styling ---------- */
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr;
+  padding-top: 60px;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1em;
 }
 
-@media (min-width: 600px) {
+@media (max-width: 1180px) {
   .grid-container {
-    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
   }
 }
 
-@media (min-width: 992px) {
+@media (max-width: 996px) {
   .grid-container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
   }
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding-top: 80px;
+  }
+}
 }
 
 .grid-container > article {
