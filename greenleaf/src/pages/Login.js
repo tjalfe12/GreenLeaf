@@ -80,13 +80,7 @@ export default function Login(props) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-<<<<<<< HEAD
         <button type="submit">continue</button>
-=======
-        <button type="submit">Login</button>
-        <p>Not a member yet?</p>
-        <NavLink to="/signup">Sign-Up </NavLink>
->>>>>>> 0bf87620af0e7bb4d0713732d09df233cdb0d540
       </form>
     </div>
   );
