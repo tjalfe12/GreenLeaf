@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import imgPlaceholder from "../default.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Create(props) {
+  const navigate = useNavigate();
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [title, setTitle] = useState("");
@@ -46,6 +48,7 @@ export default function Create(props) {
     });
     const data = await response.text();
     console.log(data);
+    navigate("/posts");
   }
 
   async function handleSubmit(event) {

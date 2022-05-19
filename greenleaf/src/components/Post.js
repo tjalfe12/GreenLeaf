@@ -44,7 +44,7 @@ export default function Post({ post, single, getPosts }) {
       <h3>
         {post.first_name} {post.last_name}
       </h3>
-      <img src={post.postImg_url} alt={post.title} />
+      <img src={post.postImg_url} alt={post.title} width="300" height="400" />
       <h2>{post.post_title}</h2>
       <h5>expiration date: {post.expiration_date}</h5>
       <p>{post.post_description}</p>

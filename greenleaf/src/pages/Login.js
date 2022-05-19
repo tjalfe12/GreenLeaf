@@ -70,7 +70,7 @@ export default function Login(props) {
           value={email}
           placeholder="example@gmail.com"
           onChange={(e) => setEmail(e.target.value)}
-        /> 
+        />
         <br />
         <label for="password-field">Password:</label>
         <input
@@ -81,6 +81,8 @@ export default function Login(props) {
         />
         <br />
         <button type="submit">continue</button>
+        <p>Not a member yet?</p>
+        <NavLink to="/signup">Sign up here!</NavLink>
       </form>
     </div>
   );
