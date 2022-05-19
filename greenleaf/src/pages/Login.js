@@ -55,7 +55,7 @@ export default function Login(props) {
     <div className="login-section">
       <h1>Login</h1>
       <form onSubmit={login}>
-      <label for="email.field">Email:</label>
+        <label for="email.field">Email:</label>
         <input
           id="email-field"
           type="text"
@@ -71,7 +71,7 @@ export default function Login(props) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <input type="submit" value="Login"></input>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
