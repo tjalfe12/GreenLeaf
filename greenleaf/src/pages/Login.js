@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import UpdateButton from "../components/buttons/UpdateButton";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Login(props) {
   const navigate = useNavigate();
@@ -54,10 +55,14 @@ export default function Login(props) {
   return (
     <div className="login-section">
       <div className="logo-image">
-        <img src={require("../assets/logo.PNG")} alt="logo" height="200px"></img>
+        <img
+          src={require("../assets/logo.PNG")}
+          alt="logo"
+          height="200px"
+        ></img>
       </div>
       <form onSubmit={login}>
-      <h1>Login</h1>
+        <h1>Login</h1>
         <label for="email.field">Email:</label>
         <input
           id="email-field"
@@ -75,7 +80,13 @@ export default function Login(props) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
+<<<<<<< HEAD
         <button type="submit">continue</button>
+=======
+        <button type="submit">Login</button>
+        <p>Not a member yet?</p>
+        <NavLink to="/signup">Sign-Up </NavLink>
+>>>>>>> 0bf87620af0e7bb4d0713732d09df233cdb0d540
       </form>
     </div>
   );

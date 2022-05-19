@@ -48,7 +48,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/create" element={<Create user={currentUser} />} />
           <Route path="/posts" element={<Posts user={currentUser} />} />
-          <Route path="/signup" element={<Signup user={currentUser} />} />
           <Route
             path="/single/:postId"
             element={<SinglePost user={currentUser} />}
@@ -72,11 +71,12 @@ function App() {
     <main className="App">
       <Nav user={currentUser} signOut={signOut} />
       <Routes>
+        <Route path="/signup" element={<Signup user={currentUser} />} />
         <Route path="/" element={<Login sendtoggle={userLogin} />} />
         <Route path="*" element={<Navigate to="/" />} />
         {showPages()}
       </Routes>
-      <Footer signOut={signOut} />
+      <Footer signOut={signOut} logged={currentUser.login} />
     </main>
   );
 }

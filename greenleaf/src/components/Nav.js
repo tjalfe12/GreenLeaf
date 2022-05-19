@@ -23,10 +23,7 @@ export default function Nav(props) {
             {/* <div className="links"> */}
             <NavLink to="/about">About </NavLink>
             <NavLink to="/create">Create </NavLink>
-
             <NavLink to="/posts">Posts </NavLink>
-            <NavLink to="/signup">Sign-Up </NavLink>
-            <NavLink to="/userpage">UserPage </NavLink>
             <UserHeader user={props.user} />
             {/* </div> */}
           </nav>
