@@ -55,14 +55,38 @@ export default function Signup() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setUser({
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      password: password,
-      is_business: is_business,
-      img_url: image,
-    });
+    if (first_name !== "") {
+      if (last_name !== "") {
+        if (email !== "") {
+          if (password !== "") {
+            if (is_business !== "") {
+              if (image !== "") {
+                setUser({
+                  first_name: first_name,
+                  last_name: last_name,
+                  email: email,
+                  password: password,
+                  is_business: is_business,
+                  img_url: image,
+                });
+              } else {
+                alert("Please choose an image");
+              }
+            } else {
+              alert("Are you a business?");
+            }
+          } else {
+            alert("Please enter a password");
+          }
+        } else {
+          alert("Please enter you email");
+        }
+      } else {
+        alert("Pleaser enter your last name");
+      }
+    } else {
+      alert("Pleaser enter your first name");
+    }
   }
 
   return (
