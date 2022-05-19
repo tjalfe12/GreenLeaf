@@ -65,7 +65,8 @@ export default function Login(props) {
           value={email}
           placeholder="example@gmail.com"
           onChange={(e) => setEmail(e.target.value)}
-        />
+        /> 
+        <br />
         <label for="password-field">Password:</label>
         <input
           id="password-field"
@@ -74,7 +75,7 @@ export default function Login(props) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <button type="submit">Login</button>
+        <button type="submit">continue</button>
       </form>
     </div>
   );
