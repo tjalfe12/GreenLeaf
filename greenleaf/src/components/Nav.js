@@ -9,7 +9,7 @@ function UserHeader(props) {
 
 export default function Nav(props) {
   function showNav() {
-    if (JSON.parse(localStorage.getItem("userLoggedIn")) === true) {
+    if ((props.user.login === true) === true) {
       return (
         <>
           <nav>
