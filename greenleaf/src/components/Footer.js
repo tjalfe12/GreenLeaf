@@ -6,6 +6,7 @@ import twLogo from "../assets/tw.png";
 import { NavLink } from "react-router-dom";
 
 export default function Footer(props) {
+  //Function to check if the user is logged in, and then returns the signout button to be displayed.
   function showSignOut() {
     if (props.logged === true) {
       return (
@@ -16,6 +17,7 @@ export default function Footer(props) {
     }
   }
 
+  //Returns the social media logos/buttons along with the signout button, if the user is logged in.
   return (
     <footer>
       <a className="SoMe" href="https://www.facebook.com">

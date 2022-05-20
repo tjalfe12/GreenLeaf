@@ -19,6 +19,7 @@ export default function Create(props) {
     user_id: null,
   });
 
+  //Function that runs every time the file uploader changes value, ie. an image is uploaded.
   function handleImageChange(event) {
     const file = event.target.files[0];
     if (file.size < 500000) {
@@ -33,6 +34,7 @@ export default function Create(props) {
     }
   }
 
+  //Form validation - Sends post if the fields are not empty.
   useEffect(() => {
     if (user.user_id !== null) {
       if (title !== "") {
@@ -55,6 +57,7 @@ export default function Create(props) {
     }
   }, [user]);
 
+  //Function to send the post via backend api.
   async function sendPost() {
     const url = "http://sabox.dk/backend/api.php?createpost";
     const response = await fetch(url, {
@@ -65,6 +68,7 @@ export default function Create(props) {
     navigate("/posts");
   }
 
+  //
   async function handleSubmit(event) {
     event.preventDefault();
     setUser({

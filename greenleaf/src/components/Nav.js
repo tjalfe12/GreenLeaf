@@ -1,13 +1,16 @@
 import { NavLink } from "react-router-dom";
 //logo from "../assets/logo.PNG";
 
-function UserHeader(props) {
-  if (props.user.login === true) {
-    return <img src={props.user.img} alt="Profile" width="30" heigh="30"></img>;
-  }
-}
-
 export default function Nav(props) {
+  //Function to return the users profile image in the navbar, if the user is logged in.
+  function UserHeader(props) {
+    if (props.user.login === true) {
+      return (
+        <img src={props.user.img} alt="Profile" width="30" heigh="30"></img>
+      );
+    }
+  }
+
   function showNav() {
     if ((props.user.login === true) === true) {
       return (

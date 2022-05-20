@@ -10,12 +10,10 @@ import SinglePost from "./pages/Singlepost.js";
 import Update from "./pages/Update.js";
 import Userpage from "./pages/Userpage.js";
 import Nav from "./components/Nav";
-import { useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import "./create.css";
 
 function App() {
-  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({
     login: false,
     email: "",
@@ -24,10 +22,12 @@ function App() {
     img: "",
   });
 
+  //Stores the user logging in, in the React local storage.
   useEffect(() => {
     localStorage.setItem("userLoggedIn", JSON.stringify(currentUser));
   }, [currentUser]);
 
+  //Function to sign out, ie. reset the currentUser state and the local storage.
   function signOut() {
     setCurrentUser({
       login: false,
@@ -39,6 +39,7 @@ function App() {
     localStorage.setItem("userLoggedIn", null);
   }
 
+  //Function to determine if the user is logged in, and then display most of the webcontent, which is not available without logging in.
   function showPages() {
     if (currentUser.login === true) {
       return (
@@ -60,11 +61,14 @@ function App() {
     }
   }
 
+  //A function to send to the login page, which will set the currentUser state in this main App.js to the user logging in on the login page.
   function userLogin(user) {
+    //Using the spread syntax, the 'user' object sent from the login page is inserted in the 'currentUser' state.
     setCurrentUser({ ...user });
     localStorage.setItem("loggedIn", "true");
   }
 
+  //Here it returns what the user will see when not logged in.
   return (
     <main className="App">
       <Nav user={currentUser} signOut={signOut} />

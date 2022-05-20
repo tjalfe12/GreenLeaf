@@ -98,7 +98,7 @@ export default function Signup() {
   return (
     <>
       <h1 className="headLineUser">Sign up for Greenleaf</h1>
-      <div className="formBoxUser">
+      <div className="formBox">
         <form onSubmit={handleSubmit}>
           <img
             className="image-preview signupPlaceholder"
