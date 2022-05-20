@@ -2,6 +2,7 @@
 :root {
   --green: #73d750;
   --light-green: rgb(172, 198, 201);
+  --light-grey: #efefef;
   --golden: #ffd700;
   --text-color-light: rgb(72, 72, 72);
   --text-color-dark: #333;
@@ -46,10 +47,15 @@ a {
   color: var(--green);
 }
 
-.page {
+.page, .post-page {
   background-color: var(--light-green);
   min-height: calc(100vh - 58px - 2em); 
   padding: 5em 3em 1em 3em;
+}
+
+.post-page {
+  display: grid;
+  justify-content: center;
 }
 
 .text-error {
@@ -82,7 +88,7 @@ a {
   }
 } */
 
-/* ---------- nav styling ---------- */
+/* ---------- Header nav styling ---------- */
 nav {
   display: inline-grid;
   grid-template-columns: 58% auto auto auto auto;
@@ -131,6 +137,7 @@ nav a.active {
   gap: 2em;
 }
 
+/* Responsive for smaller screens */
 @media (max-width: 996px) {
   .grid-container {
     grid-template-columns: 1fr 1fr;
@@ -181,6 +188,28 @@ nav a.active {
   padding: 0 1em 1em 1em;
 }
 
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  font-weight: 300;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color-dark);
+  background-color: var(--golden);
+  text-transform: uppercase;
+  padding: 0.6em; 
+  margin: 0.3em 0.3em 0 0.3em;
+}
+
+.edit {
+  background-color: var(--light-grey);
+}
+
 /* ------------------ Login Page -------------------- */
 .login-section {
   background-image: url(./assets/IMG_0043.JPG);
@@ -224,12 +253,7 @@ form {
   animation: fadeIn 0.5s;
 }
 
-form button {
-  font-size: 1em;
-  width: fit-content;
-}
-
-button {
+.login-btn {
   font-weight: 300;
   text-align: center;
   cursor: pointer;
@@ -238,26 +262,25 @@ button {
   color: var(--text-color-dark);
   background-color: var(--golden);
   text-transform: uppercase;
-  padding: 0.5em;
-  font-size: 0.8em;
-  display: block;
+  padding: 0.6em;
+  font-size: 1em;
   margin: 1em auto 0;
 }
 
-button.btn-outline {
+/* button.btn-outline {
   background-color: var(--light-green);
   color: var(--green);
   border: solid 2px var(--green);
-}
+} */
 
-.btn-sign-out {
+/* .btn-sign-out {
   position: absolute;
   right: 0;
   top: 0;
   cursor: pointer;
   font-size: 0.7em;
   padding: 2.032em 1em;
-}
+} */
 
 label {
   text-align: left;

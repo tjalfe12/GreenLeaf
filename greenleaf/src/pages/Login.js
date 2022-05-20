@@ -80,7 +80,7 @@ export default function Login(props) {
         />
         <NavLink to="/signup">Sign up here!</NavLink>
         <br />
-        <button type="submit">continue</button>
+        <button className="login-btn" type="submit">continue</button>
       </form>
     </div>
   );

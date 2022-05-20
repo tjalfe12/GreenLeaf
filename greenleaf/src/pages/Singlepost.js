@@ -19,7 +19,7 @@ export default function SinglePost(props) {
   }, [url]);
 
   return (
-    <section className="page">
+    <section className="post-page">
       <Post getPosts={props.getPosts} post={post} single="true" />
       <NavLink to="/posts">
         <button>Back</button>

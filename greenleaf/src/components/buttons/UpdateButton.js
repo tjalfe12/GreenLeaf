@@ -9,7 +9,7 @@ export default function UpdateButton({ post_id }) {
 
   return (
     <>
-      <button onClick={handleUpdateButton}>Update</button>
+      <button className="edit" onClick={handleUpdateButton}>Edit</button>
     </>
   );
 }
