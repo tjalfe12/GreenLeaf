@@ -10,7 +10,7 @@ export default function Nav(props) {
       );
     }
   }
-
+  //Function that returns the navbar, if the user is logged in.
   function showNav() {
     if ((props.user.login === true) === true) {
       return (
