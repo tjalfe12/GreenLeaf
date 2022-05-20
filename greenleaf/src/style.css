@@ -46,7 +46,7 @@ a {
 .page {
   background-color: var(--light-green);
   min-height: calc(100vh - 58px - 2em); 
-  padding: 1em;
+  padding: 5em 1em 1em 1em;
 }
 
 .text-error {
@@ -88,6 +88,7 @@ nav {
   justify-content: center;
   background-color: var(--white);
   position: fixed;
+  z-index: 99999999;
   top: 0;
   left: 0;
   right: 0;
@@ -123,38 +124,29 @@ nav a.active {
 /* ---------- grid container styling ---------- */
 .grid-container{
   display: grid;
-  padding-top: 60px;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1em;
-}
-
-@media (max-width: 1180px) {
-  .grid-container {
-    padding-top: 80px;
-  }
 }
 
 @media (max-width: 996px) {
   .grid-container {
     grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
   }
 }
 
 @media (max-width: 600px) {
   .grid-container {
     grid-template-columns: 1fr;
-    padding-top: 80px;
   }
 }
 
+/* ------------------- post styling -------------------- */
 .grid-container > article {
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  padding: 1.5em;
   background-color: var(--white);
   transition: 0.5s;
   animation: fadeIn 0.5s;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .grid-container > article ::first-letter {
@@ -162,13 +154,23 @@ nav a.active {
 }
 
 .grid-container > article:hover {
-  box-shadow: 0 8px 16px 0 var(--green);
+  box-shadow: 4px 4px 8px 0 var(--text-color-dark);
 }
 
 .grid-container > article img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.post-img {
+  border-radius: 4px 4px 0 0;
+}
+
+.creator {
+  position: absolute;
+  margin-left: 20px;
+  color: var(--green);
 }
 
 /* ------------------ Login Page -------------------- */
@@ -279,7 +281,7 @@ form .file-input {
 }
 
 /* ---------- loader styling ---------- */
-.loader {
+/* .loader {
   position: fixed;
   left: 0px;
   top: 0px;
@@ -289,17 +291,17 @@ form .file-input {
   overflow: hidden;
   background: var(--loader-background-color);
   text-align: center;
-}
+} */
 
-.spinner {
+/* .spinner {
   border: 5px solid var(--light-green);
   border-radius: 50%;
   border-top: 5px solid var(--green);
   width: 50px;
   height: 50px;
-  -webkit-animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite; */
   /* Safari */
-  animation: spin 1s linear infinite;
+  /* animation: spin 1s linear infinite;
   display: inline-block;
   vertical-align: middle;
   position: absolute;
@@ -308,15 +310,15 @@ form .file-input {
   right: 0;
   bottom: 0;
   left: 0;
-}
+} */
 
-.hide {
+/* .hide {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 0.4s, opacity 0.4s linear;
-}
+} */
 
-.avatar {
+/* .avatar {
   display: flex;
   align-items: center;
   margin: 0 0 1.2em;
@@ -337,7 +339,7 @@ article .avatar img {
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
-}
+} */
 
 /* --------------- footer and social media styling ------------ */
 footer {

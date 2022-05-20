@@ -40,10 +40,10 @@ export default function Post({ post, single, getPosts }) {
 
   return (
     <article>
-      <h3>
+      <h3 className="creator">
         {post.first_name} {post.last_name}
       </h3>
-      <img src={post.postImg_url} alt={post.title} height="350" />
+      <img className="post-img" src={post.postImg_url} alt={post.title} height="350" />
       <h2>{post.post_title}</h2>
       <h5>expiration date: {post.expiration_date}</h5>
       <p>{post.post_description}</p>
