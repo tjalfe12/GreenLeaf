@@ -77,56 +77,57 @@ export default function Update(props) {
   }
 
   return (
-    <div>
-      <h1>Create</h1>
-      <form onSubmit={handleSubmit}>
-        <img
-          className="image-preview"
-          src={image}
-          alt=" "
-          height="70"
-          width="70"
-          onError={(event) => (event.target.src = imgPlaceholder)}
-        />
-        <br />
-        <br />
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={title}
-          placeholder="Type a title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={description}
-          placeholder="Type a description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={category}
-          placeholder="choose a category"
-          onChange={(e) => setCategory(e.target.value)}
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={expiration}
-          placeholder="yyyy-mm-dd"
-          onChange={(e) => setExpiration(e.target.value)}
-        />
-        <br />
-        <br />
-        <button type="submit">Save</button>
-      </form>
-    </div>
+    <>
+      <h1 className="headLine">Update your post</h1>
+      <br />
+      <div className="formBox">
+        <form onSubmit={handleSubmit}>
+          <img
+            className="image-preview"
+            src={image}
+            alt=" "
+            onError={(event) => (event.target.src = imgPlaceholder)}
+          />
+          <br />
+          <br />
+          <input type="file" accept="image/*" onChange={handleImageChange} />
+          <br />
+          <br />
+          <input
+            type="text"
+            value={title}
+            placeholder="Type a title"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            value={description}
+            placeholder="Type a description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            value={category}
+            placeholder="choose a category"
+            onChange={(e) => setCategory(e.target.value)}
+          />
+          <br />
+          <br />
+          <input
+            type="date"
+            value={expiration}
+            placeholder="yyyy-mm-dd"
+            onChange={(e) => setExpiration(e.target.value)}
+          />
+          <br />
+          <br />
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    </>
   );
 }
