@@ -8,6 +8,7 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once("MySQL.php");
 include_once("authenticator.php");
 $homeLocation = "http://localhost:3001";
+$_SESSION['loggedInUser'] = null;
 
 
 
@@ -23,6 +24,7 @@ or http://www.sabox.dk/backend/api.php?getpost=2 to get post with id 2 */
 // Instantiates a MySQL object with auto-connect enabled (the parameter is set to true).
 $mySQL = new MySQL(true);
 $auth = new Authenticator();
+
 
 
 //----------- API endpoints for the GET method. Used to retrieve data. --------------
@@ -142,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['login'])) {
 
     if ($loginStatus->user_id != null) {
         echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\",\"id\":\"" . $loginStatus->user_id . "\", \"img\":\"" . $loginStatus->img_url . "\"}";
+        $_SESSION['loggedInUser'] = $loginStatus;
     } else if ($loginStatus == "badPass") {
         echo "{\"status\":\"failed\",\"msg\":\"Wrong password.\"}";
     } else if ($loginStatus == "noUser") {
