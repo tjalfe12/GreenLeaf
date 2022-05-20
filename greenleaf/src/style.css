@@ -3,7 +3,6 @@
   --green: #73d750;
   --light-green: rgb(172, 198, 201);
   --golden: #ffd700;
-  --text-color-light: #f1f1f1;
   --text-color-dark: #333;
   --text-color-danger: rgb(152, 58, 58);
   --white: #fff;
@@ -14,7 +13,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Nunito",
-    "Dancing Script" sans-serif;
+    "Dancing Script", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -50,9 +49,6 @@ a {
   padding: 1em;
 }
 
-/* .text-center {
-  text-align: center;
-} */
 .text-error {
   color: var(--text-color-danger);
 }
@@ -86,7 +82,7 @@ a {
 /* ---------- nav styling ---------- */
 nav {
   display: inline-grid;
-  grid-template-columns: 46% auto auto auto auto auto auto 4%;
+  grid-template-columns: 58% auto auto auto auto;
   column-gap: 0;
   align-items: center;
   justify-content: center;
