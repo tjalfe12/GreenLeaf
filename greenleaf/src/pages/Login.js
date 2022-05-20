@@ -17,6 +17,20 @@ export default function Login(props) {
   const [data, setData] = useState("");
 
   useEffect(() => {
+    async function checkSessionLog() {
+      const url = "http://www.sabox.dk/backend/api.php?checksession";
+      const response = await fetch(url);
+      const data = await response.text();
+      console.log(data);
+    }
+    if (loggedIn.login === false) {
+      console.log("dild");
+      checkSessionLog();
+    }
+    console.log("MegaDild");
+  }, []);
+
+  useEffect(() => {
     if (data.status === "success") {
       setLoggedIn({
         login: true,

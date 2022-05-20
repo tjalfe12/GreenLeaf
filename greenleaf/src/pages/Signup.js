@@ -96,68 +96,73 @@ export default function Signup() {
   }
 
   return (
-    <div>
-      <h1>Create</h1>
-      <form onSubmit={handleSubmit}>
-        <img
-          className="image-preview"
-          src={image}
-          alt=" "
-          height="70"
-          width="70"
-          onError={(event) => (event.target.src = imgPlaceholder)}
-        />
-        <br />
-        <br />
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={first_name}
-          placeholder="First name"
-          onChange={(e) => setFirst_name(e.target.value)}
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={last_name}
-          placeholder="Last name"
-          onChange={(e) => setLast_name(e.target.value)}
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={email}
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={password}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <br />
-        <input
-          type="checkbox"
-          id="is_business"
-          name="is_business"
-          value="1"
-          onChange={checkBox}
-        />
-        <label htmlFor="is_business"> I represent a business</label>
-        <br />
-        <br />
-        <button type="submit">Save</button>
-        <h3>Return to login?</h3>
-        <NavLink to="/">Login </NavLink>
-      </form>
-    </div>
+    <>
+      <h1 className="headLineUser">Sign up for Greenleaf</h1>
+      <div className="formBox">
+        <form onSubmit={handleSubmit}>
+          <img
+            className="image-preview signupPlaceholder"
+            src={image}
+            alt=" "
+            onError={(event) => (event.target.src = imgPlaceholder)}
+          />
+          <br />
+          <br />
+          <input type="file" accept="image/*" onChange={handleImageChange} />
+          <br />
+          <br />
+          <input
+            type="text"
+            value={first_name}
+            placeholder="First name"
+            onChange={(e) => setFirst_name(e.target.value)}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            value={last_name}
+            placeholder="Last name"
+            onChange={(e) => setLast_name(e.target.value)}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <br />
+          <div className="checkBox">
+            <input
+              type="checkbox"
+              id="is_business"
+              name="is_business"
+              className="item1"
+              value="1"
+              onChange={checkBox}
+            />
+            <label htmlFor="is_business" className="item2">
+              I represent a business
+            </label>
+          </div>
+          <br />
+          <br />
+          <button type="submit">Save</button>
+          <h3>Return to login?</h3>
+          <NavLink to="/">Login </NavLink>
+        </form>
+      </div>
+    </>
   );
 }
