@@ -17,7 +17,7 @@ export default function Footer(props) {
   }
 
   return (
-    <>
+    <footer>
       <a href="https://www.facebook.com">
         <img src={fbLogo} height="30" width="30" alt="Facebook logo" />
       </a>
@@ -31,6 +31,6 @@ export default function Footer(props) {
         <img src={twLogo} height="30" width="30" alt="Twitter logo" />
       </a>
       {showSignOut()}
-    </>
+    </footer>
   );
 }

@@ -175,6 +175,35 @@ nav a.active {
   object-fit: cover;
 }
 
+/* ------------------ Login Page -------------------- */
+.login-section {
+  background-image: url(./assets/IMG_0043.JPG);
+  background-size: cover;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (max-width: 666px) {
+  .login-section {
+    grid-template-columns: 1fr;
+    padding: 20px 0;
+    height: fit-content;
+  }
+  .logo-image {
+    margin-bottom: 20px;
+  }
+}
+
+.logo-image {
+  width: fit-content;
+  padding: 1em 4em;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
 /* ---------- form styling ---------- */
 form {
   display: grid;
@@ -314,20 +343,10 @@ article .avatar img {
   border-radius: 50%;
 }
 
-/* ------------------ Login Page -------------------- */
-.login-section {
-  background-image: url(./assets/IMG_0043.JPG);
-  background-size: cover;
-  height: 600px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+footer {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
-}
-
-.logo-image {
-  width: fit-content;
-  padding: 1em 4em;
-  background-color: #fff;
-  border-radius: 4px;
+  background-color: #73d750;
+  height: 60px;
 }

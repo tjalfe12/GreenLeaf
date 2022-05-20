@@ -78,10 +78,9 @@ export default function Login(props) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <NavLink to="/signup">Sign up here!</NavLink>
         <br />
         <button type="submit">continue</button>
-        <p>Not a member yet?</p>
-        <NavLink to="/signup">Sign up here!</NavLink>
       </form>
     </div>
   );
