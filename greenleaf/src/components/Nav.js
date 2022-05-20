@@ -24,9 +24,9 @@ export default function Nav(props) {
               ></img>
             </div>
             {/* <div className="links"> */}
+            <NavLink to="/posts">Home </NavLink>
+            <NavLink to="/create">New Post </NavLink>
             <NavLink to="/about">About </NavLink>
-            <NavLink to="/create">Create </NavLink>
-            <NavLink to="/posts">Posts </NavLink>
             <UserHeader user={props.user} />
             {/* </div> */}
           </nav>
