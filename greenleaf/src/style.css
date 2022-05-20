@@ -3,6 +3,7 @@
   --green: #73d750;
   --light-green: rgb(172, 198, 201);
   --golden: #ffd700;
+  --text-color-light: rgb(72, 72, 72);
   --text-color-dark: #333;
   --text-color-danger: rgb(152, 58, 58);
   --white: #fff;
@@ -29,14 +30,16 @@ h1 {
   text-align: center;
 }
 
-h2 {
+h2, h3 {
   font-weight: 500;
   letter-spacing: 0.1px;
+  margin: 0.3em 0;
 }
 
-h3 {
-  font-weight: 500;
-  letter-spacing: 0.1px;
+h5 {
+  font-weight: 100;
+  color: var(--text-color-light);
+  margin: 0;
 }
 
 a {
@@ -46,7 +49,7 @@ a {
 .page {
   background-color: var(--light-green);
   min-height: calc(100vh - 58px - 2em); 
-  padding: 5em 1em 1em 1em;
+  padding: 5em 3em 1em 3em;
 }
 
 .text-error {
@@ -125,7 +128,7 @@ nav a.active {
 .grid-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1em;
+  gap: 2em;
 }
 
 @media (max-width: 996px) {
@@ -147,6 +150,7 @@ nav a.active {
   animation: fadeIn 0.5s;
   cursor: pointer;
   border-radius: 4px;
+  text-align: left;
 }
 
 .grid-container > article ::first-letter {
@@ -171,6 +175,10 @@ nav a.active {
   position: absolute;
   margin-left: 20px;
   color: var(--green);
+}
+
+.post-description {
+  padding: 0 1em 1em 1em;
 }
 
 /* ------------------ Login Page -------------------- */
@@ -229,7 +237,6 @@ button {
   border-radius: 4px;
   color: var(--text-color-dark);
   background-color: var(--golden);
-  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 0.5em;
   font-size: 0.8em;

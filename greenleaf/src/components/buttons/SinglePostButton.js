@@ -9,7 +9,7 @@ export default function SinglePostButton({ post_id }) {
 
   return (
     <>
-      <button onClick={handleSinglePostButton}>Enter</button>
+      <button onClick={handleSinglePostButton}>continue</button>
     </>
   );
 }
