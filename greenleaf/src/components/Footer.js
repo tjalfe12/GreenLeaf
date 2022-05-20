@@ -18,16 +18,16 @@ export default function Footer(props) {
 
   return (
     <footer>
-      <a href="https://www.facebook.com">
+      <a className="SoMe" href="https://www.facebook.com">
         <img src={fbLogo} height="30" width="30" alt="Facebook logo" />
       </a>
-      <a href="https://www.instagram.com">
+      <a className="SoMe" href="https://www.instagram.com">
         <img src={inLogo} height="30" width="30" alt="Instagram logo" />
       </a>
-      <a href="https://www.pinterest.com">
+      <a className="SoMe" href="https://www.pinterest.com">
         <img src={pinLogo} height="30" width="30" alt="Pinterest logo" />
       </a>
-      <a href="https://www.twitter.com">
+      <a className="SoMe" href="https://www.twitter.com">
         <img src={twLogo} height="30" width="30" alt="Twitter logo" />
       </a>
       {showSignOut()}

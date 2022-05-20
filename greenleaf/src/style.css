@@ -343,10 +343,15 @@ article .avatar img {
   border-radius: 50%;
 }
 
+/* --------------- footer and social media styling ------------ */
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #73d750;
   height: 60px;
+}
+
+.SoMe {
+  margin: 0 0.5em;
 }
