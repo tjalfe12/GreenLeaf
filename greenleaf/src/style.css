@@ -66,28 +66,6 @@ a {
   text-transform: uppercase;
 }
 
-/* ---------- animations ---------- */
-/* fade in */
-/* @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-} */
-
 /* ---------- Header nav styling ---------- */
 nav {
   display: inline-grid;
@@ -267,21 +245,6 @@ form {
   margin: 1em auto 0;
 }
 
-/* button.btn-outline {
-  background-color: var(--light-green);
-  color: var(--green);
-  border: solid 2px var(--green);
-} */
-
-/* .btn-sign-out {
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-  font-size: 0.7em;
-  padding: 2.032em 1em;
-} */
-
 label {
   text-align: left;
 }
@@ -310,66 +273,55 @@ form .file-input {
   display: none;
 }
 
-/* ---------- loader styling ---------- */
-/* .loader {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 99999999;
-  overflow: hidden;
-  background: var(--loader-background-color);
-  text-align: center;
-} */
-
-/* .spinner {
-  border: 5px solid var(--light-green);
-  border-radius: 50%;
-  border-top: 5px solid var(--green);
-  width: 50px;
-  height: 50px;
-  -webkit-animation: spin 1s linear infinite; */
-  /* Safari */
-  /* animation: spin 1s linear infinite;
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-} */
-
-/* .hide {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 0.4s, opacity 0.4s linear;
-} */
-
-/* .avatar {
-  display: flex;
-  align-items: center;
-  margin: 0 0 1.2em;
-  text-align: left;
-}
-
-.avatar span {
-  margin: 0 0 0 1em;
-}
-
-.avatar h3,
-.avatar p {
-  margin: 0;
-}
-
 article .avatar img {
   max-width: 50px;
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
-} */
+} 
+
+/* -------------- Create and Update Forms --------------- */
+.formBox {
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+}
+
+.formBox img {
+  border-style: solid;
+  border-width: 2px;
+
+  border-color: var(--green);
+}
+
+.postPlaceholder {
+  border-radius: 5px;
+}
+
+.signupPlaceholder {
+  border-radius: 50%;
+  height: 230px;
+  width: 230px;
+}
+
+.headLine {
+  margin-top: 5%;
+  text-align: center;
+}
+.headLineUser {
+  margin-top: 1%;
+  text-align: center;
+}
+
+.checkBox input {
+  padding: 0%;
+  width: 20px;
+  display: inline-block;
+}
+.checkBox label {
+  padding: 0%;
+  display: inline-block;
+}
 
 /* --------------- footer and social media styling ------------ */
 footer {

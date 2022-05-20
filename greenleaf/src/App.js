@@ -11,7 +11,6 @@ import Update from "./pages/Update.js";
 import Userpage from "./pages/Userpage.js";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import "./create.css";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
