@@ -6,7 +6,6 @@
   --golden: #ffd700;
   --text-color-light: rgb(72, 72, 72);
   --text-color-dark: #333;
-  --text-color-danger: rgb(152, 58, 58);
   --white: #fff;
 }
 
@@ -56,14 +55,6 @@ a {
 .post-page {
   display: grid;
   justify-content: center;
-}
-
-.text-error {
-  color: var(--text-color-danger);
-}
-
-.text-error:first-letter {
-  text-transform: uppercase;
 }
 
 /* ---------- Header nav styling ---------- */
@@ -217,7 +208,7 @@ button {
   border-radius: 4px;
 }
 
-/* ---------- form styling ---------- */
+/* ---------- Login form styling ---------- */
 form {
   display: grid;
   justify-content: center;
@@ -290,7 +281,6 @@ article .avatar img {
 .formBox img {
   border-style: solid;
   border-width: 2px;
-
   border-color: var(--green);
 }
 
