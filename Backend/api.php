@@ -8,7 +8,7 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once("MySQL.php");
 include_once("authenticator.php");
 $homeLocation = "http://localhost:3001";
-$_SESSION['loggedInUser'] = null;
+
 
 
 
@@ -45,6 +45,12 @@ WHERE post_id = $post;";
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getcategories'])) {
     $sql = "SELECT * FROM `Categories`;";
     echo $mySQL->Query($sql, true);
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['checksession'])) {
+    if (isset($_SESSION['userLoggedIn'])) {
+        echo $_SESSION['loggedInUser'];
+    } else {
+        echo "none logged in";
+    }
 }
 //GetPosts is a 'view' in the database, 
 else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {

@@ -12,6 +12,7 @@ import Userpage from "./pages/Userpage.js";
 import Nav from "./components/Nav";
 import { useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
+import "./create.css";
 
 function App() {
   const navigate = useNavigate();
