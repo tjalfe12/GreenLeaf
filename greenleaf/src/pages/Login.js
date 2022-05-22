@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import UpdateButton from "../components/buttons/UpdateButton";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import AboutSection from "../components/AboutSection";
+import img from "../assets/IMG_0048.JPG";
 
 export default function Login(props) {
   const navigate = useNavigate();
@@ -66,36 +68,41 @@ export default function Login(props) {
   }
 
   return (
-    <div className="login-section">
-      <div className="logo-image">
-        <img
-          src={require("../assets/logo.PNG")}
-          alt="logo"
-          height="200px"
-        ></img>
+    <>
+      <div className="login-section">
+        <div className="logo-image">
+          <img
+            src={require("../assets/logo.PNG")}
+            alt="logo"
+            height="200px"
+          ></img>
+        </div>
+        <form onSubmit={login}>
+          <h1>Login</h1>
+          <label htmlFor="email.field">Email:</label>
+          <input
+            id="email-field"
+            type="text"
+            value={email}
+            placeholder="example@gmail.com"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <label htmlFor="password-field">Password:</label>
+          <input
+            id="password-field"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <NavLink to="/signup">Sign up here!</NavLink>
+          <br />
+          <button className="login-btn" type="submit">
+            continue
+          </button>
+        </form>
       </div>
-      <form onSubmit={login}>
-        <h1>Login</h1>
-        <label htmlFor="email.field">Email:</label>
-        <input
-          id="email-field"
-          type="text"
-          value={email}
-          placeholder="example@gmail.com"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <label htmlFor="password-field">Password:</label>
-        <input
-          id="password-field"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <NavLink to="/signup">Sign up here!</NavLink>
-        <br />
-        <button className="login-btn" type="submit">continue</button>
-      </form>
-    </div>
+      <AboutSection />
+    </>
   );
 }

@@ -13,14 +13,15 @@ body {
   color: var(--text-color-dark);
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Nunito",
-    "Dancing Script", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Nunito", "Dancing Script",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Nunito", "Dancing Script";
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Nunito",
+    "Dancing Script";
 }
 
 h1 {
@@ -30,7 +31,8 @@ h1 {
   text-align: center;
 }
 
-h2, h3 {
+h2,
+h3 {
   font-weight: 500;
   letter-spacing: 0.1px;
   margin: 0.3em 0;
@@ -46,10 +48,11 @@ a {
   color: var(--green);
 }
 
-.page, .post-page {
+.page,
+.post-page {
   background-color: var(--light-green);
-  min-height: calc(100vh - 58px - 2em); 
-  padding: 5em 3em 1em 3em;
+  min-height: calc(100vh - 58px - 2em);
+  padding: 3.5em 3em 1em 3em;
 }
 
 .post-page {
@@ -100,7 +103,7 @@ nav a.active {
 }
 
 /* ---------- grid container styling ---------- */
-.grid-container{
+.grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2em;
@@ -171,7 +174,7 @@ button {
   color: var(--text-color-dark);
   background-color: var(--golden);
   text-transform: uppercase;
-  padding: 0.6em; 
+  padding: 0.6em;
   margin: 0.3em 0.3em 0 0.3em;
 }
 
@@ -206,6 +209,38 @@ button {
   padding: 1em 4em;
   background-color: #fff;
   border-radius: 4px;
+}
+
+.aboutContent {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  /*  font-family: "Nunito"; */
+}
+
+.aboutContent img {
+  width: 30%;
+  padding: 4%;
+}
+
+.aboutText {
+  width: 40%;
+  padding: 6%;
+}
+
+@media (max-width: 666px) {
+  .aboutContent {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .aboutContent img {
+    width: 65%;
+  }
+  .aboutText {
+    width: 65%;
+    padding: 6%;
+  }
 }
 
 /* ---------- Login form styling ---------- */
@@ -269,7 +304,7 @@ article .avatar img {
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
-} 
+}
 
 /* -------------- Create and Update Forms --------------- */
 .formBox {
