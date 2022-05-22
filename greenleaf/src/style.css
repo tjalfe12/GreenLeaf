@@ -157,6 +157,7 @@ nav a.active {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   text-align: center;
+  text-shadow: 0px 0px 5px #3f3f3f;
 }
 
 .post-description {
