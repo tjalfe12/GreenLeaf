@@ -154,6 +154,9 @@ nav a.active {
   position: absolute;
   margin-left: 20px;
   color: var(--green);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  text-align: center;
 }
 
 .post-description {
