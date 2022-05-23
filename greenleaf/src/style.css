@@ -208,8 +208,12 @@ p {
   justify-content: flex-end;
 }
 
+.formBtns {
+  display: flex;
+  justify-content: center;
+}
 .formBtns #submitBtn {
-  width: 83%;
+  width: 100%;
 }
 
 button {
