@@ -18,6 +18,7 @@ export default function Posts() {
   return (
     <section className="page">
       <h1>Available offers</h1>
+
       <section className="grid-container">
         {posts.map((post) => (
           <SinglePost getPosts={getPosts} post={post} key={post.post_id} />

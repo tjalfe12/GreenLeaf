@@ -6,14 +6,15 @@ export default function DeleteButton({ post_id, getPosts }) {
   async function deletePost() {
     const url = `http://www.sabox.dk/backend/api.php?deletepost=${post_id}`;
     const response = await fetch(url);
-    const data = await response.text();
     navigate(`/posts`);
     getPosts();
   }
 
   return (
     <>
-      <button className="edit" onClick={deletePost}>Delete</button>
+      <button className="edit" onClick={deletePost}>
+        Delete
+      </button>
     </>
   );
 }

@@ -1,7 +1,10 @@
 /* ---------- root variables ---------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nunito:wght@200&display=swap");
+
 :root {
   --green: #73d750;
-  --light-green: rgb(172, 198, 201);
+  --light-green: rgb(245, 255, 227);
   --light-grey: #efefef;
   --golden: #ffd700;
   --text-color-light: rgb(72, 72, 72);
@@ -25,13 +28,26 @@ code {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 500;
   letter-spacing: 0.1px;
   text-align: center;
+  font-family: "Dancing Script";
+  text-shadow: 1px 0px 1px var(--green);
 }
+textarea {
+  width: 86.5%;
+  height: 150px;
+  padding: 12px 20px;
+  border: 2px solid var(--green);
+  border-radius: 4px;
+}
+h2 {
+  font-size: 1.8em;
+  font-family: "Dancing Script";
 
-h2,
+  margin: 0.3em 0;
+}
 h3 {
   font-weight: 500;
   letter-spacing: 0.1px;
@@ -42,15 +58,22 @@ h5 {
   font-weight: 100;
   color: var(--text-color-light);
   margin: 0;
+  margin-bottom: 15px;
 }
 
 a {
   color: var(--green);
 }
 
+hr {
+  border-width: 0.5px;
+  border-color: var(--green);
+  width: 60%;
+}
+
 .page,
 .post-page {
-  background-color: var(--light-green);
+  /* background-color: var(--light-green); */
   min-height: calc(100vh - 58px - 2em);
   padding: 3.5em 3em 1em 3em;
 }
@@ -68,16 +91,24 @@ nav {
   align-items: center;
   justify-content: center;
   background-color: var(--white);
+  border-bottom: 1px solid var(--green);
   position: fixed;
   z-index: 99999999;
   top: 0;
   left: 0;
   right: 0;
+  background-color: #f3ffee;
 }
 
 .logo {
   display: flex;
-  margin-left: 4%;
+  margin-left: 0%;
+}
+.logo img {
+  display: flex;
+  margin-left: -13%;
+  padding-right: 9px;
+  border-right: 1px solid var(--green);
 }
 
 /* Style the links inside the navigation bar */
@@ -109,6 +140,13 @@ nav a.active {
   gap: 2em;
 }
 
+.grid-container h2,
+h3,
+h5,
+p {
+  text-align: center;
+}
+
 /* Responsive for smaller screens */
 @media (max-width: 996px) {
   .grid-container {
@@ -130,6 +168,7 @@ nav a.active {
   cursor: pointer;
   border-radius: 4px;
   text-align: left;
+  border: 0.5px solid var(--green);
 }
 
 .grid-container > article ::first-letter {
@@ -169,6 +208,10 @@ nav a.active {
   justify-content: flex-end;
 }
 
+.formBtns #submitBtn {
+  width: 83%;
+}
+
 button {
   font-weight: 300;
   text-align: center;
@@ -180,6 +223,12 @@ button {
   text-transform: uppercase;
   padding: 0.6em;
   margin: 0.3em 0.3em 0 0.3em;
+}
+.singlePostForm {
+  background-color: #ffffff;
+  border: 1.5px solid #73d750;
+  border-radius: 4px;
+  padding: 0px;
 }
 
 .edit {

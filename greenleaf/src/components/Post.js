@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import UpdateButton from "./buttons/UpdateButton";
 import DeleteButton from "./buttons/DeleteButton";
 import SinglePostButton from "./buttons/SinglePostButton";
@@ -51,6 +50,7 @@ export default function Post({ post, single, getPosts }) {
       />
       <div className="post-description">
         <h2>{post.post_title}</h2>
+        <hr></hr>
         <p>{post.post_description}</p>
         <h5>expiration date: {post.expiration_date}</h5>
         <div className="buttons">

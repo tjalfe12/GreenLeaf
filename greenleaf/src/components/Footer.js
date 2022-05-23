@@ -3,7 +3,6 @@ import fbLogo from "../assets/fb.png";
 import inLogo from "../assets/in.png";
 import pinLogo from "../assets/pin.png";
 import twLogo from "../assets/tw.png";
-import { NavLink } from "react-router-dom";
 
 export default function Footer(props) {
   //Function to check if the user is logged in, and then returns the signout button to be displayed.

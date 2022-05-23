@@ -23,7 +23,7 @@ or http://www.sabox.dk/backend/api.php?getpost=2 to get post with id 2 */
 
 // Instantiates a MySQL object with auto-connect enabled (the parameter is set to true).
 $mySQL = new MySQL(true);
-$auth = new Authenticator();
+
 
 
 
@@ -45,12 +45,6 @@ WHERE post_id = $post;";
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getcategories'])) {
     $sql = "SELECT * FROM `Categories`;";
     echo $mySQL->Query($sql, true);
-} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['checksession'])) {
-    if (isset($_SESSION['userLoggedIn'])) {
-        echo $_SESSION['loggedInUser'];
-    } else {
-        echo "none logged in";
-    }
 }
 //GetPosts is a 'view' in the database, 
 else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getallposts'])) {
@@ -142,22 +136,41 @@ class TestUser
     public $is_business = "1";
 }
 
-
+// ----------------------- Login and session API endpoints ------------------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['login'])) {
     $user = json_decode(file_get_contents('php://input'));
-    $loginStatus = $auth->verify($user->userEmail, $user->userPassword, $mySQL);
+    login($user, $mySQL);
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['checksession'])) {
+    if ($_SESSION['userLoggedIn'] == true) {
+        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\",\"id\":\"" . $_SESSION['loggedInUser']->user_id . "\", \"img\":\"" . $_SESSION['loggedInUser']->img_url . "\"}";
+    } else {
+        echo "{\"status\":\"failed at session login\"}";
+    }
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['signout'])) {
+    if (isset($_SESSION['userLoggedIn'])) {
+        $_SESSION['userLoggedIn'] = false;
+        $_SESSION['loggedInUser'] = null;
+        echo "Signout successful";
+    } else {
+        echo "Signout failed";
+    }
+}
+
+
+
+function login($user, $sql)
+{
+    $auth = new Authenticator();
+    $loginStatus = $auth->verify($user->userEmail, $user->userPassword, $sql);
 
 
     if ($loginStatus->user_id != null) {
-        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\",\"id\":\"" . $loginStatus->user_id . "\", \"img\":\"" . $loginStatus->img_url . "\"}";
         $_SESSION['loggedInUser'] = $loginStatus;
+        $_SESSION['userLoggedIn'] = true;
+        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\",\"id\":\"" . $loginStatus->user_id . "\", \"img\":\"" . $loginStatus->img_url . "\"}";
     } else if ($loginStatus == "badPass") {
         echo "{\"status\":\"failed\",\"msg\":\"Wrong password.\"}";
     } else if ($loginStatus == "noUser") {
         echo "{\"status\":\"failed\",\"msg\":\"User not found\"}";
     }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['loginSuccess'])) {
-    echo $_COOKIE['currentUser'];
 }

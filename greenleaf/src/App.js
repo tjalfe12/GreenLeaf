@@ -27,7 +27,10 @@ function App() {
   }, [currentUser]);
 
   //Function to sign out, ie. reset the currentUser state and the local storage.
-  function signOut() {
+  async function signOut() {
+    const url = "http://www.sabox.dk/backend/api.php?signout";
+    const response = await fetch(url);
+    const data = await response.text();
     setCurrentUser({
       login: false,
       email: "",

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import imgPlaceholder from "../default.png";
-import { Navigate, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Update(props) {
   const navigate = useNavigate();
@@ -12,7 +13,6 @@ export default function Update(props) {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [expiration, setExpiration] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [post_id, setPost_id] = useState("");
   const [toggle, setToggle] = useState(false);
 
@@ -41,15 +41,14 @@ export default function Update(props) {
 
   function handleImageChange(event) {
     const file = event.target.files[0];
-    if (file.size < 500000) {
+    if (file.size < 1000000) {
       const reader = new FileReader();
       reader.onload = (event) => {
         setImage(event.target.result);
       };
       reader.readAsDataURL(file);
-      setErrorMessage("");
     } else {
-      setErrorMessage("The image file is too big!");
+      alert("Image size is too big! Please choose an image below 1MB");
     }
   }
 
@@ -59,7 +58,6 @@ export default function Update(props) {
       method: "PUT",
       body: JSON.stringify(post),
     });
-    const data = await response.text();
     navigate("/posts");
   }
 
@@ -81,7 +79,7 @@ export default function Update(props) {
       <h1 className="headLine">Update your post</h1>
       <br />
       <div className="formBox">
-        <form onSubmit={handleSubmit}>
+        <form name="updateForm" onSubmit={handleSubmit}>
           <img
             className="image-preview"
             src={image}
@@ -101,20 +99,23 @@ export default function Update(props) {
           />
           <br />
           <br />
-          <input
-            type="text"
+          <textarea
+            name="comment"
+            form="updateForm"
             value={description}
-            placeholder="Type a description"
+            placeholder="Write a description"
             onChange={(e) => setDescription(e.target.value)}
-          />
-          <br />
+          >
+            Enter text here...
+          </textarea>
+          {/*   <br />
           <br />
           <input
             type="text"
             value={category}
             placeholder="choose a category"
             onChange={(e) => setCategory(e.target.value)}
-          />
+          /> */}
           <br />
           <br />
           <input
@@ -125,7 +126,14 @@ export default function Update(props) {
           />
           <br />
           <br />
-          <button type="submit">Save</button>
+          <div className="formBtns">
+            <NavLink to="/posts">
+              <button>Back</button>
+            </NavLink>
+            <button id="submitBtn" type="submit">
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </>

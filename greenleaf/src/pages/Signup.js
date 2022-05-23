@@ -6,13 +6,11 @@ import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const navigate = useNavigate();
   const [image, setImage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [is_business, setIs_business] = useState("0");
-  const [readyToSend, setReadyToSend] = useState(false);
   const [user, setUser] = useState({
     first_name: null,
     last_name: null,
@@ -39,15 +37,14 @@ export default function Signup() {
 
   function handleImageChange(event) {
     const file = event.target.files[0];
-    if (file.size < 500000) {
+    if (file.size < 1000000) {
       const reader = new FileReader();
       reader.onload = (event) => {
         setImage(event.target.result);
       };
       reader.readAsDataURL(file);
-      setErrorMessage("");
     } else {
-      setErrorMessage("The image file is too big!");
+      alert("Image size too big! Maximum image size is 1MB");
     }
   }
 

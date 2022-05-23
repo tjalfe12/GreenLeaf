@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import UpdateButton from "../components/buttons/UpdateButton";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import AboutSection from "../components/AboutSection";
-import img from "../assets/IMG_0048.JPG";
 
 export default function Login(props) {
   const navigate = useNavigate();
@@ -19,20 +17,6 @@ export default function Login(props) {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    async function checkSessionLog() {
-      const url = "http://www.sabox.dk/backend/api.php?checksession";
-      const response = await fetch(url);
-      const data = await response.text();
-      console.log(data);
-    }
-    if (loggedIn.login === false) {
-      console.log("dild");
-      checkSessionLog();
-    }
-    console.log("MegaDild");
-  }, []);
-
-  useEffect(() => {
     if (data.status === "success") {
       setLoggedIn({
         login: true,
@@ -41,8 +25,8 @@ export default function Login(props) {
         id: data.id,
         img: data.img,
       });
-      alert("Logged in!");
     } else if (data.status === "failed") {
+      alert("Invalid login");
     }
   }, [data]);
 
@@ -52,6 +36,17 @@ export default function Login(props) {
       navigate("/posts");
     }
   }, [loggedIn]);
+
+  useEffect(() => {
+    async function checkSessionLog() {
+      const url = "http://www.sabox.dk/backend/api.php?checksession";
+      const response = await fetch(url);
+      setData(await response.json());
+    }
+    if (loggedIn.login === false) {
+      checkSessionLog();
+    }
+  }, []);
 
   async function login(event) {
     event.preventDefault();

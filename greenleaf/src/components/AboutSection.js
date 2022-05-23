@@ -1,4 +1,4 @@
-import img from "../assets/IMG_0048.JPG";
+import img from "../assets/IMG_0046.JPG";
 
 export default function AboutSection() {
   return (

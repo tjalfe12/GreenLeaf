@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Ignores the default warnings (from connecting to MySQL)
 set_error_handler(function () {
 });

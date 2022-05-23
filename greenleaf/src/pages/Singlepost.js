@@ -20,10 +20,12 @@ export default function SinglePost(props) {
 
   return (
     <section className="post-page">
-      <Post getPosts={props.getPosts} post={post} single="true" />
-      <NavLink to="/posts">
-        <button>Back</button>
-      </NavLink>
+      <div className="singlePostForm">
+        <Post getPosts={props.getPosts} post={post} single="true" />
+        <NavLink to="/posts">
+          <button>Back</button>
+        </NavLink>
+      </div>
     </section>
   );
 }

@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import imgPlaceholder from "../assets/foodPlaceholder.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export default function Create(props) {
   const navigate = useNavigate();
   const [image, setImage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("0");
+  //const [category, setCategory] = useState("0");
   const [expiration, setExpiration] = useState("");
   const [user, setUser] = useState({
     post_title: "",
@@ -22,15 +21,14 @@ export default function Create(props) {
   //Function that runs every time the file uploader changes value, ie. an image is uploaded.
   function handleImageChange(event) {
     const file = event.target.files[0];
-    if (file.size < 500000) {
+    if (file.size < 1000000) {
       const reader = new FileReader();
       reader.onload = (event) => {
         setImage(event.target.result);
       };
       reader.readAsDataURL(file);
-      setErrorMessage("");
     } else {
-      setErrorMessage("The image file is too big!");
+      alert("The image file is too big! Please choose a different one");
     }
   }
 
@@ -86,7 +84,7 @@ export default function Create(props) {
       <h1 className="headLine">Post an offer</h1>
       <br />
       <div className="formBox">
-        <form onSubmit={handleSubmit}>
+        <form name="createForm " onSubmit={handleSubmit}>
           <img
             className="image-preview postPlaceholder"
             src={image}
@@ -108,12 +106,16 @@ export default function Create(props) {
           />
           <br />
           <br />
-          <input
-            type="text"
+
+          <textarea
+            name="comment"
+            form="createForm"
             value={description}
-            placeholder="Type a description"
+            placeholder="Write a description"
             onChange={(e) => setDescription(e.target.value)}
-          />
+          >
+            Enter text here...
+          </textarea>
           {/*  <br />
         <br />
         <input
@@ -132,7 +134,14 @@ export default function Create(props) {
           />
           <br />
           <br />
-          <button type="submit">Save</button>
+          <div className="formBtns">
+            <NavLink to="/posts">
+              <button>Back</button>
+            </NavLink>
+            <button id="submitBtn" type="submit">
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </>
