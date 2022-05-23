@@ -108,7 +108,7 @@ nav {
   display: flex;
   margin-left: -13%;
   padding-right: 9px;
-  border-right: 1px solid var(--green);
+  /* border-right: 1px solid var(--green); */
 }
 
 /* Style the links inside the navigation bar */

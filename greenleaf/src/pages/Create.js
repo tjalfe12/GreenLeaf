@@ -135,12 +135,12 @@ export default function Create(props) {
           <br />
           <br />
           <div className="formBtns">
-            <button id="submitBtn" type="submit">
-              Save
-            </button>
             <NavLink to="/posts">
               <button>Back</button>
             </NavLink>
+            <button id="submitBtn" type="submit">
+              Save
+            </button>
           </div>
         </form>
       </div>
