@@ -125,7 +125,7 @@ export default function Signup() {
           <br />
           <br />
           <input
-            type="text"
+            type="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
