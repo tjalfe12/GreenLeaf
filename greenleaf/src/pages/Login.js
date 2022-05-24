@@ -77,7 +77,7 @@ export default function Login(props) {
           <label htmlFor="email.field">Email:</label>
           <input
             id="email-field"
-            type="text"
+            type="email"
             value={email}
             placeholder="example@gmail.com"
             onChange={(e) => setEmail(e.target.value)}
