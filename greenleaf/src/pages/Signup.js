@@ -105,9 +105,11 @@ export default function Signup() {
           />
           <br />
           <br />
+          <label>Profile picture:</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
           <br />
           <br />
+          <label>First name:</label>
           <input
             type="text"
             value={first_name}
@@ -116,6 +118,7 @@ export default function Signup() {
           />
           <br />
           <br />
+          <label>Last name:</label>
           <input
             type="text"
             value={last_name}
@@ -124,6 +127,7 @@ export default function Signup() {
           />
           <br />
           <br />
+          <label>Email:</label>
           <input
             type="email"
             value={email}
@@ -132,6 +136,7 @@ export default function Signup() {
           />
           <br />
           <br />
+          <label>Password:</label>
           <input
             type="text"
             value={password}

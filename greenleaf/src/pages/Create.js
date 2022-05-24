@@ -95,9 +95,11 @@ export default function Create(props) {
           />
           <br />
           <br />
+          <label>Picture of the food:</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
           <br />
           <br />
+          <label>Title:</label>
           <input
             type="text"
             value={title}
@@ -107,6 +109,7 @@ export default function Create(props) {
           <br />
           <br />
 
+          <label>Description:</label>
           <textarea
             name="comment"
             form="createForm"
@@ -126,6 +129,7 @@ export default function Create(props) {
         /> */}
           <br />
           <br />
+          <label>Expiration date:</label>
           <input
             type="date"
             value={expiration}
