@@ -163,11 +163,11 @@ function login($user, $sql)
     $auth = new Authenticator();
     $loginStatus = $auth->verify($user->userEmail, $user->userPassword, $sql);
 
-
     if ($loginStatus->user_id != null) {
         $_SESSION['loggedInUser'] = $loginStatus;
         $_SESSION['userLoggedIn'] = true;
-        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\",\"id\":\"" . $loginStatus->user_id . "\", \"img\":\"" . $loginStatus->img_url . "\"}";
+        echo "{\"status\":\"success\",\"msg\":\"Successfully logged in.\",\"id\":\"" .
+            $loginStatus->user_id . "\", \"img\":\"" . $loginStatus->img_url . "\"}";
     } else if ($loginStatus == "badPass") {
         echo "{\"status\":\"failed\",\"msg\":\"Wrong password.\"}";
     } else if ($loginStatus == "noUser") {

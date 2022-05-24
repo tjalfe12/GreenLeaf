@@ -44,6 +44,9 @@ export default function Signup() {
       };
       reader.readAsDataURL(file);
     } else {
+      //Resets the image input and image preview.
+      event.target.value = null;
+      setImage(imgPlaceholder);
       alert("Image size too big! Maximum image size is 1MB");
     }
   }

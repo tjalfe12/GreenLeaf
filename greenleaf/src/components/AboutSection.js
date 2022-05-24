@@ -1,5 +1,6 @@
 import img from "../assets/IMG_0046.JPG";
 
+//A component that display some information about GreenLeaf.
 export default function AboutSection() {
   return (
     <div className="aboutContent">

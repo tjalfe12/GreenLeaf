@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import imgPlaceholder from "../default.png";
+import imgPlaceholder from "../assets/foodPlaceholder.png";
 import { useParams, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
@@ -48,6 +48,9 @@ export default function Update(props) {
       };
       reader.readAsDataURL(file);
     } else {
+      //Resets the image input and image preview.
+      event.target.value = null;
+      setImage(imgPlaceholder);
       alert("Image size is too big! Please choose an image below 1MB");
     }
   }

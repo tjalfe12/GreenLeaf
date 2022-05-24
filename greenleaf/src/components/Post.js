@@ -2,7 +2,9 @@ import UpdateButton from "./buttons/UpdateButton";
 import DeleteButton from "./buttons/DeleteButton";
 import SinglePostButton from "./buttons/SinglePostButton";
 
+// A component for an individual post.
 export default function Post({ post, single, getPosts }) {
+  //If the author of the post is the one who is logged in, display the update button.
   function showUpdateButton() {
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
 
@@ -15,6 +17,7 @@ export default function Post({ post, single, getPosts }) {
     }
   }
 
+  //If the author of the post is the one who is logged in, display the delete button.
   function showDeleteButton() {
     const userId = JSON.parse(localStorage.getItem("userLoggedIn")).id;
 
@@ -27,6 +30,7 @@ export default function Post({ post, single, getPosts }) {
     }
   }
 
+  //If the post is displayed on the main posts page (and not on the individual post page), show the "continue" button.
   function showSingleButton() {
     if (single !== "true") {
       return (
@@ -53,7 +57,9 @@ export default function Post({ post, single, getPosts }) {
         <hr></hr>
         <p>{post.post_description}</p>
         <h5>expiration date: {post.expiration_date}</h5>
+
         <div className="buttons">
+          {/* Conditional renders */}
           {showDeleteButton()}
           {showUpdateButton()}
           {showSingleButton()}

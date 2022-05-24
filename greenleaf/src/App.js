@@ -26,7 +26,7 @@ function App() {
     localStorage.setItem("userLoggedIn", JSON.stringify(currentUser));
   }, [currentUser]);
 
-  //Function to sign out, ie. reset the currentUser state and the local storage.
+  //Function to sign out, ie. reset the currentUser state, local storage and session in the backend.
   async function signOut() {
     const url = "http://www.sabox.dk/backend/api.php?signout";
     const response = await fetch(url);

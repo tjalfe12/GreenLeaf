@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import imgPlaceholder from "../assets/foodPlaceholder.png";
 import { useNavigate, NavLink } from "react-router-dom";
 
+//The page to create a new post.
 export default function Create(props) {
   const navigate = useNavigate();
   const [image, setImage] = useState("");
@@ -9,7 +10,9 @@ export default function Create(props) {
   const [description, setDescription] = useState("");
   //const [category, setCategory] = useState("0");
   const [expiration, setExpiration] = useState("");
-  const [user, setUser] = useState({
+
+  //The post object that will be sent to the server.
+  const [post, setPost] = useState({
     post_title: "",
     post_description: "",
     post_categoryid: "",
@@ -28,13 +31,16 @@ export default function Create(props) {
       };
       reader.readAsDataURL(file);
     } else {
+      //Resets the image input and image preview.
+      event.target.value = null;
+      setImage(imgPlaceholder);
       alert("The image file is too big! Please choose a different one");
     }
   }
 
   //Form validation - Sends post if the fields are not empty.
   useEffect(() => {
-    if (user.user_id !== null) {
+    if (post.user_id !== null) {
       if (title !== "") {
         if (description) {
           if (expiration) {
@@ -53,14 +59,14 @@ export default function Create(props) {
         alert("Please enter a title");
       }
     }
-  }, [user]);
+  }, [post]);
 
   //Function to send the post via backend api.
   async function sendPost() {
     const url = "http://sabox.dk/backend/api.php?createpost";
     const response = await fetch(url, {
       method: "POST",
-      body: JSON.stringify(user),
+      body: JSON.stringify(post),
     });
     const data = await response.text();
     navigate("/posts");
@@ -69,7 +75,7 @@ export default function Create(props) {
   //
   async function handleSubmit(event) {
     event.preventDefault();
-    setUser({
+    setPost({
       post_title: title,
       post_description: description,
       // post_categoryid: category,
@@ -96,7 +102,12 @@ export default function Create(props) {
           <br />
           <br />
           <label>Picture of the food:</label>
-          <input type="file" accept="image/*" onChange={handleImageChange} />
+          <input
+            type="file"
+            name="fileField"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
           <br />
           <br />
           <label>Title:</label>

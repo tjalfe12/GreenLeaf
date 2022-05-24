@@ -23,12 +23,14 @@ export default function Nav(props) {
                 height="44px"
               ></img>
             </div>
-            {/* <div className="links"> */}
+
+            {/* Top navbar links */}
             <NavLink to="/posts">Home </NavLink>
             <NavLink to="/create">New Post </NavLink>
             <NavLink to="/about">About </NavLink>
+
+            {/* Conditional render of the users profile picture */}
             <UserHeader user={props.user} />
-            {/* </div> */}
           </nav>
         </>
       );
