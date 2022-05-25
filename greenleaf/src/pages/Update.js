@@ -16,12 +16,8 @@ export default function Update(props) {
   const [post_id, setPost_id] = useState("");
   const [toggle, setToggle] = useState(false);
 
-  useEffect(() => {
-    if (toggle === true) {
-      sendPost();
-    }
-  }, [post]);
-
+  //On render and when url state changes, this makes an API call to the server and receives data for the specific post with the given postID from params.
+  // Then it loads the data into the appropriate states.
   useEffect(() => {
     async function getPost() {
       const response = await fetch(url);
@@ -39,6 +35,15 @@ export default function Update(props) {
     getPost();
   }, [url]);
 
+  //On render this will run once, but to prevent an unwanted sending of data, the toggle state must be set true first. But when the post state is properly loaded with data,
+  // and the toggle state is set to true, this will trigger the sendPost() function.
+  useEffect(() => {
+    if (toggle === true) {
+      sendPost();
+    }
+  }, [post]);
+
+  //When the user selects an image to upload, this function is called. If the file is less than 1MB, it is stored in the image state as a base64 value.
   function handleImageChange(event) {
     const file = event.target.files[0];
     if (file.size < 1000000) {
@@ -55,6 +60,7 @@ export default function Update(props) {
     }
   }
 
+  //Makes a PUT request to the server, including the post data to be put in the database.
   async function sendPost() {
     const url = `http://sabox.dk/backend/api.php?updatepostid=${post_id}`;
     const response = await fetch(url, {
@@ -64,6 +70,8 @@ export default function Update(props) {
     navigate("/posts");
   }
 
+  //When the user presses the save button, this function will store all the data from the various relevant states in the post state, as an object.
+  //Then it will set the toggle state to true, indicating everything is ready to be uploaded.
   async function handleSubmit(event) {
     event.preventDefault();
     setPost({

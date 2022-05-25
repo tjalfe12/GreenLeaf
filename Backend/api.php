@@ -126,15 +126,6 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['deletepost'])) {
 }
 // -------------------------------------------------------------------------------------
 
-//Class for testing purposes
-class TestUser
-{
-    public $first_name = "Helle";
-    public $last_name = "Ib";
-    public $email = "hi@gmail.com";
-    public $password = "password";
-    public $is_business = "1";
-}
 
 // ----------------------- Login and session API endpoints ------------------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['login'])) {

@@ -23,6 +23,7 @@ export default function Create(props) {
 
   //Function that runs every time the file uploader changes value, ie. an image is uploaded.
   function handleImageChange(event) {
+    //Saves the input from the file input field in a "file" variable
     const file = event.target.files[0];
     if (file.size < 1000000) {
       const reader = new FileReader();
